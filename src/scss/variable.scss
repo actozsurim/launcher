@@ -1,0 +1,122 @@
+@charset 'utf-8';
+@import "./base.scss"; 
+
+/* Font */
+$fontLight: 'Noto Sans KR Light', san-serif;
+$fontRegular: 'Noto Sans KR Regular', san-serif;
+$font9: 0.9em;
+
+
+/* media query */
+$pc: 1024px;
+@mixin pc {
+	@media screen and (min-width: #{$pc}) {
+		@content;
+	}
+}
+$tablet: 640px;
+@mixin tablet {
+	@media screen and (min-width: #{$tablet}) {
+		@content;
+	}
+}
+@mixin maxWidth {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+@mixin btnRoundW {
+    display: inline-block;
+    margin: 0 auto;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 1.5em;
+    padding: 0.4em 2.7em 0.5em 1.3em;
+    //text-align: left;
+    background: url(../img/common/icon_view.png) no-repeat 90% 48%;
+    background-size: auto 14px;
+}
+@mixin btnRoundWhover {
+    color: #bb0f2b;
+    background: #fff url(../img/sub/info_icon_red.png) no-repeat no-repeat 90% 48%;
+    background-size: auto 14px;
+}
+@mixin btnRoundR {
+    display: inline-block;
+    margin: 0 auto;
+    color: #bb0f2b;
+    border: 1px solid #bb0f2b;
+    border-radius: 1.5em;
+    padding: 0.4em 2.7em 0.5em 1.3em;
+    //text-align: left;
+    background: url(../img/sub/info_icon_red.png) no-repeat no-repeat 90% 48%;
+    background-size: auto 14px;
+}
+@mixin btnRoundRhover {
+    color: #fff;
+    background: #bb0f2b url(../img/common/icon_view.png) no-repeat 90% 48%;
+    background-size: auto 14px;
+}
+//nav {display: none;}
+
+
+/* css */
+.hidden {display: none !important;}
+.blank {height: 64px;}
+@mixin bg100 {
+    background-size: 100%;
+}
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+@mixin noText {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    left: -9999px;
+    top: -9999px;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+
+/* padding */
+$mPadding: 15px;
+$right15: calc(100% - 15px);
+
+
+/* color */
+$c_border: #d2d2d2;
+$c_red: #bb0f2b;
+
+
+/* 작업용 메뉴 */
+.main #contents{
+    p {
+        padding: 1em 0.5em;
+        font-size: 2em;
+        background: rgba(0,0,0,0.4);
+        text-align: center;
+    }
+    .work {
+        //position: fixed;
+        right: 0;
+        top: 120px;
+        dt {
+            padding: 0.5em;
+            background: rgba(255,255,255,0.7);
+            font-size: 2em;
+        }
+        dd {
+            text-indent: 2em;
+            background: rgba($color: #000000, $alpha: 0.7);
+            a {
+                color: #fff;
+                padding: 1em;
+                display: block;
+                border-bottom: 1px solid #666;
+            }
+        }
+    }
+}
