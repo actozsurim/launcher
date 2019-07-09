@@ -56,7 +56,9 @@ gulp.task('compile-sass', function () {
 		.pipe(concat('launcher_2019.css'))
 		.pipe(gulp.dest(dist + '/css/'));
 });
-
+gulp.task('compile-sass:watch', function(){
+    gulp.watch(paths.scss, ['sass']);
+});
 
 // HTML 파일을 압축한다.
 gulp.task('compress-html', function () {
