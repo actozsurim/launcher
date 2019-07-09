@@ -89,10 +89,10 @@ gulp.task('sprite', function(){
         imgName: 'sprite.png',
         padding: 10,	// 이미지 사이의 패딩
         cssName: 'sprite.scss',
-		imgPath: '/img/sprite/sprite.png'
+		imgPath: '/img-sprite/sprite.png'
 		//algorithm: 'left-right'	//가로로
     }));
-    var imgStream = spriteData.img.pipe(gulp.dest(dist + '/img/sprite/')).on('error', function (err) {
+    var imgStream = spriteData.img.pipe(gulp.dest(dist + '/img-sprite/')).on('error', function (err) {
 		console.log(err)
     });
 	var cssStream = spriteData.css.pipe(gulp.dest(src + '/scss')).on('error', function (err) {
@@ -103,7 +103,6 @@ gulp.task('sprite', function(){
 
 // 파일 변경 감지 및 브라우저 재시작
 gulp.task('watch', function () {
-	livereload.listen();
 	gulp.watch(paths.js, gulp.series( 'combine-js'));
 	gulp.watch(paths.spriteImages, gulp.series('sprite'));
 	gulp.watch(paths.scss, gulp.task('compile-sass'));
@@ -111,6 +110,7 @@ gulp.task('watch', function () {
 	//gulp.watch(paths.img, gulp.series( 'minify'));
 	gulp.watch(paths.img, gulp.series( 'image'));
 	gulp.watch(dist + '/**').on('change', livereload.changed);
+	livereload.listen();
 });
 
 // build
@@ -119,4 +119,4 @@ gulp.task('build', gulp.series(
 
 // 기본 task 설정
 gulp.task('default', gulp.series(
-	'server', /* 'combine-js', 'compile-sass', 'compress-html', 'image',*/ 'watch', 'sprite' ));
+	'server', /*'combine-js', 'compile-sass', 'compress-html', 'image',*/ 'watch', 'sprite' ));
