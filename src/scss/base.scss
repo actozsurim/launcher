@@ -10,10 +10,10 @@ figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, su
 	padding: 0;
 	border: 0;
 	font-size: 15px;
-	line-height: 28px;
+	line-height: 140%;
 	letter-spacing: -1px;
-	font-family: 'Noto Sans KR Light', "돋움", Arial, Helvetica, sans-serif;
-	vertical-align: baseline;
+	font-family: 'Noto Sans KR Light', '돋움', Arial, Helvetica, sans-serif;
+	vertical-align: middle;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

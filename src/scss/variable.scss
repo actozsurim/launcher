@@ -2,8 +2,8 @@
 @import "./base.scss"; 
 
 /* Font */
-$fontLight: 'Noto Sans KR Light', san-serif;
-$fontRegular: 'Noto Sans KR Regular', san-serif;
+$fontLight: 'Noto Sans KR Light', '돋움', Arial, Helvetica, sans-serif;
+$fontRegular: 'Noto Sans KR Regular', '돋움', Arial, Helvetica, sans-serif;
 $font9: 0.9em;
 
 
@@ -70,14 +70,9 @@ $tablet: 640px;
     height: $height;
 }
 @mixin noText {
-    position: absolute;
     display: block;
-    width: 0;
-    height: 0;
-    left: -9999px;
-    top: -9999px;
     overflow: hidden;
-    visibility: hidden;
+    text-indent: -9999px;
 }
 
 

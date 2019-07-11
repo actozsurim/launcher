@@ -1,16 +1,428 @@
 <html>
     <head>
-        <title>2019 FINAL FANTASY XIV FAN FESTIVAL IN SEOUL 1</title>
+        <title>2019 FINAL FANTASY XIV LAUNCHER</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />        
-        <link rel="stylesheet" type="text/css" href="../../../css/launcher_2019.css" id="CssURL"/>
-        <script type="text/javascript" src="../../../js/jquery-1.11.1.js"></script>
-        <script type="text/javascript" src="../../../js/loginCheck.js"></script>
-        <script type="text/javascript" src="../../../js/jquery.bxslider.min.js"></script>
-        <script type="text/javascript" src="../../../js/script.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../css/launcher_2019.css" id="CssURL"/>
+        <link rel="stylesheet" type="text/css" href="../../scss/lib/jquery.mCustomScrollbar.css" id="CssURL"/>
+        <script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="../../js/loginCheck.js"></script>
+        <script type="text/javascript" src="../../js/jquery.bxslider.min.js"></script>
+        <script type="text/javascript" src="../../js/lib/jquery.mCustomScrollbar.concat.min.js"></script>
 
     </head>
     <body>
-        <div id="launcher_wrap">launcher.html</div>
+        <div id="launcher_wrap">
+            <!--최상단-->
+            <div class="top_bar">
+                <div class="left"><span>FINAL FANTASY XIV</span></div>
+                <ul class="right">
+                    <li class="setting"><span>설정</span></li>
+                    <li class="minimum"><span>최소화</span></li>
+                    <li class="maximum"><span>최대화</span></li>
+                    <li class="close"><span>닫기</span></li>
+                </ul>
+            </div>
+            <!--//최상단-->
+
+            <!--LNB-->
+            <div id="lnb">
+                <!--유저 정보-->
+                <div class="user" id="pcroom"><!-- pc방일 경우 id="pcroom" 붙이기 -->
+                    <div class="photo">
+                        <div class="fire_on pc"></div>
+                        <div class="fire_off not-pc"></div>
+                        <div class="face"><img src="https://image.ff14.co.kr/html2/img/char_dummy.png" /></div>
+                        <span class="icon icon-pc pc">PC방</span>
+                    </div>
+                    <div class="info wide">
+                        <span class="name">닉네임은열두자리까지이다</span>&nbsp;님, <br />환영합니다
+                    </div>
+                    <div class="logout">로그아웃<i class="icon icon-logout"></i></div>
+                </div>
+                <!--//유저 정보-->
+                <!--Direct X 11-->
+                <div class="direct">
+                    <span class="wide">Direct X 11 MODE</span>
+                    <span class="narrow">DX 11</span>
+                    <div class="check_dx">
+                        <label class="radio_dx" for="checkDX">
+                            <input type="checkbox" value="true" name="checkDX" id="checkDX">
+                            <i class="icon icon-btn-dx"></i>
+                        </label>
+                    </div>
+                </div>
+                <!--//Direct X 11-->
+                <!--나의 현황-->
+                <ul class="list top">
+                    <li>
+                        <i class="icon icon-crystal"></i>
+                        <div class="text common">
+                            <span class="left color1">크리스탈</span>
+                            <span class="right">9,999,999</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon icon-fixed"></i>
+                        <div class="text common">
+                            <span class="left color1">정액제</span>
+                            <span class="right">30일 1시간 2분</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon icon-regular"></i>
+                        <div class="text common">
+                            <span class="left color1">정량제</span>
+                            <span class="right">123시간 5분</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon icon-bulter"></i>
+                        <div class="text common">
+                            <span class="left">집사</span>
+                            <span class="right">1/7 명</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon icon-coupon"></i>
+                        <div class="text common">
+                            <span class="left">쿠폰</span>
+                            <span class="right">1개</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon icon-eveitem"></i>
+                        <div class="text common">
+                            <span class="left">이벤트 아이템</span>
+                            <span class="right">22개</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            <span class="left">선물함</span>
+                            <span class="right">2개</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="icon icon-cart"></i>
+                        <div class="text common">
+                            <span class="left">장바구니</span>
+                            <span class="right">122개</span>
+                        </div>
+                    </li>
+                </ul>
+                <!--//나의 현황-->
+                <!--pc방 혜택-->
+                <ul class="list pc fold">   
+                    <li style="height: 0; margin-top: 0;">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            신규 모험가 혜택
+                        </div>
+                    </li>   
+                    <li style="height: 0; margin-top: 0;">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            복귀 모험가 혜택
+                        </div>
+                    </li>   
+                    <li style="height: 0; margin-top: 0;">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            친구 초대 혜택
+                        </div>
+                    </li>
+                    <li id="foldPc">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            PC방 혜택
+                        </div>
+                        <i class="icon icon-plus"></i>
+                    </li>
+                </ul>
+                <!--//pc방 혜택-->                    
+                <!--하단 메뉴-->
+                <ul class="list bottom">
+                    <li>
+                        <a href="https://www.ff14.co.kr/events/pub/BeginnerGuide" target="_blank">
+                            <i class="icon icon-beginner"></i>
+                            <div class="text common">
+                                <span>초보자 가이드</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://guide.ff14.co.kr/" target="_blank">
+                            <i class="icon icon-official"></i>
+                            <div class="text common">
+                                <span>공식 가이드</span>
+                            </div>
+                        </a>                        
+                    </li>
+                    <li>
+                        <a href="https://www.ff14.co.kr/main" target="_blank">
+                            <i class="icon icon-ffweb"></i>
+                            <div class="text common">
+                                <span>공식홈페이지 바로가기</span>    
+                            </div>
+                        </a>
+                    </li>
+                </ul>            
+                <!--//하단 메뉴-->
+                <!--SNS-->
+                <div class="sns_wrap">
+                    <ul class="sns">
+                        <li><a href="https://www.instagram.com/ffxiv_kr/" target="_blank"><i class="icon icon-insta"></i>Instargram</a></li>
+                        <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" target="_blank"><i class="icon icon-facebook"></i>Facebook</a></li>
+                        <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" target="_blank"><i class="icon icon-youtube"></i>Youtube</a></li>
+                        <li><a href="https://twitter.com/FFXIV_KOREA" target="_blank"><i class="icon icon-twitter"></i>Twitter</a></li>
+                    </ul>
+                </div>
+                <!--//SNS-->
+                <!--LNB 접기-->
+                <div class="btn_fold">
+                    <i class="icon icon-fold">접기</i>
+                    <i class="icon icon-unfold">펼치기</i>
+                </div>
+                <!--//LNB 접기-->
+            </div>
+            <!--//LNB-->
+            
+            <!--LNB: pc방 자동실행일 경우-->
+            <div id="lnb" class="pc_auto hidden">
+                <!--자동 패치-->
+                <div class="patch">
+                    <div class="icon icon-patch-fire">
+                        <i class="icon ">로딩 아이콘 넣어야함</i>
+                    </div>
+                    <p class="white">PC방 자동 패치 <br />진행중입니다.</p>
+                    <p class="grey">패치가 완료되면 <br />자동으로 런처를 종료합니다.</p>
+                </div>
+                <!--//자동 패치-->
+                <!--pc방 혜택-->
+                <ul class="list pc fold">   
+                    <li style="height: 0; margin-top: 0;">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            신규 모험가 혜택
+                        </div>
+                    </li>   
+                    <li style="height: 0; margin-top: 0;">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            복귀 모험가 혜택
+                        </div>
+                    </li>   
+                    <li style="height: 0; margin-top: 0;">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            친구 초대 혜택
+                        </div>
+                    </li>
+                    <li id="foldPc">
+                        <i class="icon icon-gift"></i>
+                        <div class="text common">
+                            PC방 혜택
+                        </div>
+                        <i class="icon icon-plus"></i>
+                    </li>
+                </ul>
+                <!--//pc방 혜택-->                    
+                <!--하단 메뉴-->
+                <ul class="list bottom">
+                    <li>
+                        <a href="https://www.ff14.co.kr/events/pub/BeginnerGuide" target="_blank">
+                            <i class="icon icon-beginner"></i>
+                            <div class="text common">
+                                <span>초보자 가이드</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://guide.ff14.co.kr/" target="_blank">
+                            <i class="icon icon-official"></i>
+                            <div class="text common">
+                                <span>공식 가이드</span>
+                            </div>
+                        </a>                        
+                    </li>
+                    <li>
+                        <a href="https://www.ff14.co.kr/main" target="_blank">
+                            <i class="icon icon-ffweb"></i>
+                            <div class="text common">
+                                <span>공식홈페이지 바로가기</span>    
+                            </div>
+                        </a>
+                    </li>
+                </ul>            
+                <!--//하단 메뉴-->
+                <!--SNS-->
+                <div class="sns_wrap">
+                    <ul class="sns">
+                        <li><a href="https://www.instagram.com/ffxiv_kr/" target="_blank"><i class="icon icon-insta"></i>Instargram</a></li>
+                        <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" target="_blank"><i class="icon icon-facebook"></i>Facebook</a></li>
+                        <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" target="_blank"><i class="icon icon-youtube"></i>Youtube</a></li>
+                        <li><a href="https://twitter.com/FFXIV_KOREA" target="_blank"><i class="icon icon-twitter"></i>Twitter</a></li>
+                    </ul>
+                </div>
+                <!--//SNS-->
+            </div>
+            <!--//LNB-->
+            <div id="content">
+                <!--상단 프로그레스 바 영역-->
+                <div class="progress_wrap">
+                    <ul class="menu">
+                        <li><a href="#">홈</a></li>
+                        <li><a href="https://www.ff14.co.kr/news/notice" target="_blank">새소식</a></li>
+                        <li><a href="https://www.ff14.co.kr/shop" target="_blank">크리스탈샵</a></li>
+                    </ul>
+                    <!--프로그레스 바-->
+                    <!--------- 필요한 바를 골라 쓰시고 작업시 ↓ 아래의 스타일을 삭제해주세요--------->
+                    <div class="progress" style="height: 50px; overflow-y: scroll;">
+                        <!--업데이트 중-->
+                        <div class="bar_wrap">
+                            <div class="volume">
+                                <p class="white">5.39 GB  / 19.58 GB</p>
+                                <p class="grey">다운로드 중 약 7분 소요 (1/2)</p>
+                            </div>
+                            <div class="per">81%</div>
+                            <div class="bar">
+                                <div class="gauge">
+                                    <div class="bg" id="updating" style="width: 31%"></div>
+                                    <p><i class="icon icon-stop"></i> 설치 중지</p>
+                                </div>
+                                <!--설치 중지 눌렀을 때-->
+                                <!--                  
+                                <div class="gauge">
+                                    <div class="bg stop" style="width: 31%"></div>
+                                    <p><i class="icon icon-ing"></i> 계속</p>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                        <!--//업데이트 중-->
+                        <!--게임 시작-->
+                        <div class="bar_wrap">
+                            <div class="volume">
+                                <p class="grey">현재버전: 2019.04.03.0000.0000 (2019.04.03.0000.0000)</p>
+                                <p class="grey">최신버전: 2019.04.03.0000.0000 (2019.04.03.0000.0000)</p>
+                            </div>
+                            <div class="bar">
+                                <div class="gauge">
+                                    <div class="bg" id="start" style="width: 100%"></div>
+                                    <p>게임 시작</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--//게임 시작-->
+                        <!--점검중-->
+                        <div class="bar_wrap">
+                            <div class="bar">
+                                <div class="gauge">
+                                    <div class="bg" id="checking" style="width: 100%"></div>
+                                    <p>점검중</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--//점검중-->
+                        <!--업데이트 필요-->
+                        <div class="bar_wrap">
+                            <div class="volume">
+                                <p class="grey">현재버전: 2019.04.03.0000.0000 (2019.04.03.0000.0000)</p>
+                                <p class="white">최신버전: 2019.04.03.0000.0000 (2019.04.03.0000.0000)</p>
+                            </div>
+                            <div class="bar">
+                                <div class="gauge">
+                                    <div class="bg" id="update" style="width: 100%"></div>
+                                    <p>업데이트</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--//업데이트 필요-->
+                        <!--설치중-->
+                        <div class="bar_wrap">
+                            <div class="volume">
+                                <p class="white line1">5.39 GB  / 19.58 GB</p>
+                            </div>
+                            <div class="per">31%</div>
+                            <div class="bar">
+                                <div class="gauge">
+                                    <div class="bg" id="installing" style="width: 31%"></div>
+                                    <p><i class="icon icon-stop"></i> 설치 중지</p>
+                                </div>  
+                                <!--설치 중지 눌렀을 때-->
+                                <!--                                
+                                <div class="gauge">
+                                    <div class="bg stop" style="width: 31%"></div>
+                                    <p><i class="icon icon-ing"></i> 계속</p>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                        <!--//설치중-->
+                        <!--게임설치-->
+                        <div class="bar_wrap">
+                            <div class="volume">
+                                <p class="white line1">게임 클라이언트 설치가 필요합니다. </p>
+                            </div>
+                            <div class="bar">
+                                <div class="gauge">
+                                    <div class="bg" id="install" style="width: 100%"></div>
+                                    <p>게임 설치</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--//게임설치-->
+                    </div>
+                    <!--프로그레스 바-->
+                </div>
+                <!--//상단 프로그레스 바 영역-->
+                <!--컨텐츠 블록-->
+                <div class="blocks">
+                    <h1><img src="../../img/launcher/logo.png" alt="FINAL FANTASY XIV | 칠흑의 반역자" /></h1>
+                    sdfsdfsdfsdfsdf
+                    <div id="content-l2" class="content">
+                            <h2>"light-2"</h2>
+                            <hr />
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> 
+                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p> 
+                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p> 
+                            <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas...</p>
+                            <hr />
+                            <p>End of content.</p>
+                        </div>
+
+
+                </div>
+                <!--//컨텐츠 블록-->
+
+                <!--토스트 팝업-->
+                <ul class="toast">
+                    <li>
+                        <p class="notice"><i class="icon icon-toast"></i>현재 정액제 이용권 잔여기간이 3일 남았습니다.</p>
+                        <p class="date">2019년 7월 23일 24:00</p>
+                    </li>
+                    <li>
+                        <p class="notice"><i class="icon icon-toast"></i>선물 받은 아이템이 있습니다.
+                        </p>
+                        <p class="date">2019년 7월 23일 24:00</p>
+                    </li>
+                    <li>
+                        <p class="notice"><i class="icon icon-toast"></i>현재 정액제 이용권 잔여기간이 3일 남았습니다.</p>
+                        <p class="date">2019년 7월 23일 24:00</p>
+                    </li>
+                    <li>
+                        <p class="notice"><i class="icon icon-toast"></i>선물 받은 아이템이 있습니다.
+                        </p>
+                        <p class="date">2019년 7월 23일 24:00</p>
+                    </li>
+                </ul>
+                <!--//토스트 팝업-->
+            </div>
+        </div>        
+        <script type="text/javascript" src="../../js/script.js"></script>
     </body>
 </html>
