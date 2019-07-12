@@ -73,11 +73,11 @@ input:focus {
             opacity: .5;
             &.btn_hidden {
                 right: 35px;
-                @include sprite($ico_small);
+                @include sprite($ico-small);
             }
             &.btn_close {
                 right: 13px;
-                @include sprite($ico_close);
+                @include sprite($ico-close);
             }
             &:hover {
                 opacity: 1;
@@ -113,33 +113,33 @@ input:focus {
             }
         }
         .ico_ff14 {
-            @include sprite($ico_ff14_off);
+            @include sprite($ico-ff14-off);
             &:hover {
-                @include sprite($ico_ff14_on);
+                @include sprite($ico-ff14-on);
             }
         }
         .ico_inst {
-            @include sprite($ico_inst_off);
+            @include sprite($ico-inst-off);
             &:hover {
-                @include sprite($ico_inst_on);
+                @include sprite($ico-inst-on);
             }
         }
         .ico_fb {
-            @include sprite($ico_fb_off);
+            @include sprite($ico-fb-off);
             &:hover {
-                @include sprite($ico_fb_on);
+                @include sprite($ico-fb-on);
             }
         }
         .ico_yt {
-            @include sprite($ico_yt_off);
+            @include sprite($ico-yt-off);
             &:hover {
-                @include sprite($ico_yt_on);
+                @include sprite($ico-yt-on);
             }
         }
         .ico_tw {
-            @include sprite($ico_tw_off);
+            @include sprite($ico-tw-off);
             &:hover {
-                @include sprite($ico_tw_on);
+                @include sprite($ico-tw-on);
             }
         }
     }
@@ -156,9 +156,9 @@ input:focus {
             position: absolute;
             top: 23px;
             right: 20px; 
-            @include sprite($ico_unfold);
+            @include sprite($ico-unfold);
             &.on {
-                @include sprite($ico_fold);
+                @include sprite($ico-fold);
             }
         }
         .dc_select {
@@ -192,7 +192,7 @@ input:focus {
                         border-top: 0;
                     }
                     i {
-                        @include sprite($ico_fold);
+                        @include sprite($ico-fold);
                     }
                 }
             }
@@ -212,10 +212,10 @@ input:focus {
             margin: 0 auto;
             text-indent: -9999px;
             &.none {text-indent: 0; line-height: 30px;}
-            &.ac {@include sprite($ico_actoz);}
-            &.na {@include sprite($ico_naver);}
-            &.nx {@include sprite($ico_nexon);}
-            &.ka {@include sprite($ico_kakao);}
+            &.ac {@include sprite($ico-actoz);}
+            &.na {@include sprite($ico-naver);}
+            &.nx {@include sprite($ico-nexon);}
+            &.ka {@include sprite($ico-kakao);}
         }
         .ch_sBox {
             display: none;
@@ -273,11 +273,11 @@ input:focus {
                         width: 14px;
                         margin-right: 7px;
                         vertical-align: middle;
-                        @include sprite($chk_off);
+                        @include sprite($chk-off);
                     }
                 }
                 input[type="checkbox"]:checked + label:before{
-                    @include sprite($chk_on);
+                    @include sprite($chk-on);
                 }
             }
         }
@@ -295,10 +295,10 @@ input:focus {
                 background: rgba(255, 255, 255, .2);
             }
             .BDC_ReloadIcon:hover {
-                @include sprite($btn_refresh_on);
+                @include sprite($btn-refresh-on);
             }
             .BDC_SoundIcon:hover {
-                @include sprite($btn_sound_on);
+                @include sprite($btn-sound-on);
             }
         }
         .alert_txt {
@@ -322,9 +322,9 @@ input:focus {
                 height: 52px;
                 text-indent: -9999px;
                 cursor: pointer;
-                @include sprite($btn_login_off);
+                @include sprite($btn-login-off);
                 &:hover {
-                    @include sprite($btn_login_on);
+                    @include sprite($btn-login-on);
                 }
             }
             ul {
@@ -377,9 +377,9 @@ input:focus {
             .btn_uotp {
                 cursor: pointer;
                 text-indent: -9999px;
-                @include sprite($btn_ok_off);
+                @include sprite($btn-ok-off);
                 &:hover {
-                    @include sprite($btn_ok_on);
+                    @include sprite($btn-ok-on);
                 }
             }
         }
