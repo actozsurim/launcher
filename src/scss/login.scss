@@ -84,10 +84,10 @@ input:focus {
             }
         }
         h2 {
-            @include sprite($logo);
             display: block;
             margin: 0 auto;
             text-indent: -9999px;
+            @include sprite($logo);
         }
     }
 
@@ -211,7 +211,7 @@ input:focus {
             display: block;
             margin: 0 auto;
             text-indent: -9999px;
-            &.none {text-indent: 0;}
+            &.none {text-indent: 0; line-height: 30px;}
             &.ac {@include sprite($ico_actoz);}
             &.na {@include sprite($ico_naver);}
             &.nx {@include sprite($ico_nexon);}
@@ -250,7 +250,7 @@ input:focus {
     // cont1 area
     .cont1 {
         .login_area {
-            padding-bottom: 25px;
+            padding-bottom: 32px;
             input {
                 width: 100%;
                 height: 40px;
@@ -330,11 +330,11 @@ input:focus {
             ul {
                 position: relative;
                 text-align: center;
-                margin-top: 5px;
+                margin-top: 8px;
                 &:before {
                     content: "";
                     position: absolute;
-                    top: 9px;
+                    top: 6px;
                     left: 116px;
                     width: 1px;
                     height: 13px;
@@ -403,7 +403,7 @@ input:focus {
                 &:before {
                     content: "";
                     position: absolute;
-                    top: 9px;
+                    top: 6px;
                     left: 128px;
                     width: 1px;
                     height: 13px;
@@ -438,7 +438,7 @@ input:focus {
     }
     .naverArea, .nexonArea {
         .login_area {
-            padding-bottom: 142px;
+            padding-bottom: 149px;
         }
     }
     //kakaoArea
