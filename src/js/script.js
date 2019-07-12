@@ -19,7 +19,7 @@ btnFold.on("click", () => {
 
 
 				
-$("#content-l2").mCustomScrollbar({theme:"light-2"});
+$(".scroll-js").mCustomScrollbar({theme:"light-2"});
 
 
 // LNB내 PC방 혜택 아코디언
