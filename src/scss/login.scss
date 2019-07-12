@@ -1,6 +1,459 @@
 @charset 'utf-8';
-@import "./variable.scss"; 
+@import "./variable.scss";
+@import "./sprite.scss";
+@font-face {font-family: 'Noto Sans KR Light';font-style: normal;font-weight: 300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}
+
+// Mixin
+@mixin bg($filename, $option, $color: transparent) {
+    background: $color url(../img/login/#{$filename}) $option;
+}
+
+
+//login main reset
+button {
+    margin:0;
+    padding:0;
+    border:0 none;
+    background-color:transparent;
+}
+button::-moz-focus-inner {
+    padding:0;
+    border:0;
+}
+input[type="text"],
+input[type="password"]{
+    margin:0;
+    padding:0;
+    border: 1px solid rgba(255, 255, 255, .2);
+    background-color:transparent;
+    color: rgba(255, 255, 255, .5);
+}
+input:focus {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+
+//channel view
+.actozArea, .naverArea, .nexonArea, .kakaoArea, .dateArea, .cont1, .cont2 {
+    display: none;
+    &.on {
+        display: block;
+    }
+}
+
+
+//layer background__dim
+.dim{ 
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 1;
+}
 
 #login_wrap {
-    background: seagreen;
+    position: relative;
+    width: 300px;
+    height: 690px;
+    margin: 20px auto 0;
+    padding: 0 50px;
+    @include bg('bg.jpg', no-repeat 0 0);
+    color: #fff;
+    .header {
+        padding-top: 60px;
+        button {
+            position: absolute;
+            top: 13px;
+            cursor: pointer;
+            text-indent: -9999px;
+            opacity: .5;
+            &.btn_hidden {
+                right: 35px;
+                @include sprite($ico_small);
+            }
+            &.btn_close {
+                right: 13px;
+                @include sprite($ico_close);
+            }
+            &:hover {
+                opacity: 1;
+            }
+        }
+        h2 {
+            @include sprite($logo);
+            display: block;
+            margin: 0 auto;
+            text-indent: -9999px;
+        }
+    }
+
+    // cont1, cont2 all
+    .cont1, .cont2 {
+        position: relative;
+        height: 430px;
+        min-height: 430px;
+    }
+    .sns_area {
+        ul {
+            text-align: center;
+            li {
+                display: inline-block;
+                text-indent: -9999px;
+                margin-left: 22px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                a {
+                    display: block;
+                }
+            }
+        }
+        .ico_ff14 {
+            @include sprite($ico_ff14_off);
+            &:hover {
+                @include sprite($ico_ff14_on);
+            }
+        }
+        .ico_inst {
+            @include sprite($ico_inst_off);
+            &:hover {
+                @include sprite($ico_inst_on);
+            }
+        }
+        .ico_fb {
+            @include sprite($ico_fb_off);
+            &:hover {
+                @include sprite($ico_fb_on);
+            }
+        }
+        .ico_yt {
+            @include sprite($ico_yt_off);
+            &:hover {
+                @include sprite($ico_yt_on);
+            }
+        }
+        .ico_tw {
+            @include sprite($ico_tw_off);
+            &:hover {
+                @include sprite($ico_tw_on);
+            }
+        }
+    }
+    .login {
+        position:relative;
+        margin: 29px 0 10px;
+        .logoBox {
+            display: block;
+            height: 30px;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        i {
+            position: absolute;
+            top: 23px;
+            right: 20px; 
+            @include sprite($ico_unfold);
+            &.on {
+                @include sprite($ico_fold);
+            }
+        }
+        .dc_select {
+            display: none;
+            position:relative;
+            width: 58px;
+            height: 28px;
+            margin-bottom: 10px;
+            padding: 0 10px;
+            border: 1px solid #434343;
+            background: #1b1b1b;
+            cursor: pointer;
+            i {
+                top: 10px;
+                right: 10px;
+                z-index: 4;
+            }
+            .dc_txt {
+                display: none;
+                position: absolute;
+                top: -1px;
+                left: -1px;
+                z-index: 3;
+                li {
+                    width: 58px;
+                    height: 28px;
+                    padding: 0 10px;
+                    border: 1px solid #434343;
+                    background: #1b1b1b;
+                    &:last-child {
+                        border-top: 0;
+                    }
+                    i {
+                        @include sprite($ico_fold);
+                    }
+                }
+            }
+        }
+        .ch_select {
+            position:relative;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            background:rgba(255, 255, 255, .2);
+            color: #fff;
+            text-align: center;
+            z-index: 2;
+        }
+        .ch_logo {
+            display: block;
+            margin: 0 auto;
+            text-indent: -9999px;
+            &.none {text-indent: 0;}
+            &.ac {@include sprite($ico_actoz);}
+            &.na {@include sprite($ico_naver);}
+            &.nx {@include sprite($ico_nexon);}
+            &.ka {@include sprite($ico_kakao);}
+        }
+        .ch_sBox {
+            display: none;
+            position:absolute;
+            top: 51px;
+            z-index: 2;
+            li {
+                width: 300px;
+                margin-bottom: 1px;
+                background-color:#242424;
+                &:hover{
+                    background-color: #3c3c3c;
+                }
+            }
+        }
+    }
+
+    // date center ver css
+    .header.dc {
+        padding-top: 48px;
+    }
+    .login.dc {
+        margin-top: 1px;
+        .ch_sBox {
+            top: 91px;
+        }
+        .dc_select {
+            display: block;
+        }
+    }
+
+    // cont1 area
+    .cont1 {
+        .login_area {
+            padding-bottom: 25px;
+            input {
+                width: 100%;
+                height: 40px;
+                margin-bottom: 5px;
+                text-indent: 10px;
+                font-size: 15px;
+            }
+            .id_chk {
+                input[type="checkbox"] {
+                    display: none;
+                    margin-right: 7px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                }
+                label {
+                    color: rgba(255, 255, 255, .5);
+                    &:before {
+                        content: "";
+                        display: inline-block;
+                        width: 14px;
+                        margin-right: 7px;
+                        vertical-align: middle;
+                        @include sprite($chk_off);
+                    }
+                }
+                input[type="checkbox"]:checked + label:before{
+                    @include sprite($chk_on);
+                }
+            }
+        }
+        .captcha {
+            display: block;
+            height: 117px;
+            text-align: center;
+            input {
+                width: 100%;
+                height: 40px;
+                margin-top: 5px;
+                border: 0;
+                text-indent: 10px;
+                font-size: 15px;
+                background: rgba(255, 255, 255, .2);
+            }
+            .BDC_ReloadIcon:hover {
+                @include sprite($btn_refresh_on);
+            }
+            .BDC_SoundIcon:hover {
+                @include sprite($btn_sound_on);
+            }
+        }
+        .alert_txt {
+            margin: 15px 0 10px;
+            height: 36px;
+            p {
+                display: table-cell;
+                width: 300px;
+                height: 36px;
+                text-align: center;
+                font-size: 14px;
+                vertical-align: middle;
+                line-height: 18px;
+                color: #e9415d;
+            }
+        }
+        .btn_area {
+            // margin-bottom: 26px;
+            .btn_login {
+                width: 300px;
+                height: 52px;
+                text-indent: -9999px;
+                cursor: pointer;
+                @include sprite($btn_login_off);
+                &:hover {
+                    @include sprite($btn_login_on);
+                }
+            }
+            ul {
+                position: relative;
+                text-align: center;
+                margin-top: 5px;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 9px;
+                    left: 116px;
+                    width: 1px;
+                    height: 13px;
+                    border-right: 1px solid #fff;
+                    opacity: .5;
+                }
+                li {
+                    display: inline-block;
+                    opacity: .5;
+                    &:hover {
+                        opacity: 1;
+                    }
+                    &:first-child {
+                        margin-right: 25px;
+                    }
+                    a {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    // cont2 area
+    .cont2 {
+        p {
+            font-size: 15px;
+            padding-top: 21px;
+            line-height: 18px;
+        }
+        .uotp_area {
+            margin-top: 10px;
+            input {
+                width: 192px;
+                height: 40px;
+                margin-right: 5px;
+                text-indent: 10px;
+                font-size: 15px;
+            }
+            .btn_uotp {
+                cursor: pointer;
+                text-indent: -9999px;
+                @include sprite($btn_ok_off);
+                &:hover {
+                    @include sprite($btn_ok_on);
+                }
+            }
+        }
+        .alert_txt {
+            p {
+                text-align: center;
+                font-size: 14px;
+                padding-top: 16px;
+                line-height: 18px;
+                color: #e9415d;
+            }
+        }
+        .btn_area {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin-bottom: 26px;
+            ul {
+                text-align: center;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 9px;
+                    left: 128px;
+                    width: 1px;
+                    height: 13px;
+                    border-right: 1px solid #fff;
+                    opacity: .5;
+                }
+                li {
+                    display: inline-block;
+                    opacity: .5;
+                    &:hover {
+                        opacity: 1;
+                    }
+                    &:first-child {
+                        margin-right: 25px;
+                    }
+                    a {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    //channel css
+    //naverArea , nexonArea
+    .naverArea .cont2{
+        .btn_area ul {
+            &::before {
+                left: 142px;
+            }
+        }
+    }
+    .naverArea, .nexonArea {
+        .login_area {
+            padding-bottom: 142px;
+        }
+    }
+    //kakaoArea
+    .kakaoArea {
+        .login_area {
+            text-align: center;
+            margin-bottom: 225px;
+            padding: 18px 0;
+            background: rgba(255, 255, 255, .2);
+            p {
+                line-height: 20px;
+                &:first-child {
+                    color: #fcd41c;
+                }
+            }
+        }
+    }
 }
