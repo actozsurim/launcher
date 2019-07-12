@@ -24,6 +24,7 @@ var paths = {
 	jsLib: src + '/js/lib/*.js',
 	json: src + '/json/*.json',
 	scss: src + '/scss/*.scss',
+	scssLib: src + '/scss/lib/*.*',
 	html: src + '/**/*.html',
 	img: src + '/img/**/*.*',
 	spriteImages: src + '/img-sprites/*.png'
@@ -49,14 +50,14 @@ gulp.task('combine-js', function () {
 
 // sass 파일을 css 로 컴파일한다.
 gulp.task('compile-sass', function () {
-	return gulp.src(paths.scss)
+	return gulp.src([paths.scss, paths.scssLib])
 		//.pipe(sassGlob())	//use glob imports
 		.pipe(clean(dist + '/css/'))
 		.pipe(sass().on('error', sass.logError))
-		.pipe(concat('launcher_2019.css'))
+		//.pipe(concat('launcher_2019.css'))
 		.pipe(gulp.dest(dist + '/css/'));
 });
-gulp.task('compile-sass:watch', function(){
+gulp.task('sass:watch', function(){
     gulp.watch(paths.scss, ['sass']);
 });
 
