@@ -87,7 +87,7 @@ input:focus {
             display: block;
             margin: 0 auto;
             text-indent: -9999px;
-            @include sprite($logo_login);
+            @include sprite($logo);
         }
     }
 
