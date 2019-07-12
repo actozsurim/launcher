@@ -1,16 +1,339 @@
 <html>
     <head>
-        <title>2019 FINAL FANTASY XIV FAN FESTIVAL IN SEOUL 1</title>
+        <title>FF14 런처 로그인</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="stylesheet" type="text/css" href="../../../css/launcher_2019.css" id="CssURL"/>
         <script type="text/javascript" src="../../../js/jquery-1.11.1.js"></script>
         <script type="text/javascript" src="../../../js/loginCheck.js"></script>
         <script type="text/javascript" src="../../../js/jquery.bxslider.min.js"></script>
         <script type="text/javascript" src="../../../js/script.js"></script>
+        <script type="text/javascript" src="../../../js/login_design.js"></script>
 
     </head>
     <body>
-            <div id="login_wrap">login.html</div>
+        <div id="login_wrap">
+            <!-- header -->
+            <div class="header"> <!-- 데이터센터 노출 시 class="dc" 추가 -->
+                <button type="button" class="btn_hidden" onfocus="blur();">최소화</button>
+                <button type="button" class="btn_close" onfocus="blur();">런처 닫기</button>
+                <h2>FINAL FANTASY XIV ONLINE</h2>
+            </div>
+            <!-- //header -->
+            <!-- login channel select -->
+            <div class="login"> <!-- 데이터센터 노출 시 class="dc" 추가 -->
+                <div class="ch_select">
+                    <!-- 
+                        채널링 선택 전 노출 : <span class="ch_logo none">채널링 계정을 선택해주세요</span>
+                        채널링 선택 후 노출 : <span class="ch_logo"><span>
+                        채널링 선택 후 채널사 로고 변경 : class="ch_logo"를 유지하면서 ac,na,nx,ka 추가 시 채널사 로고 변경
+                    -->
+                    <div class="logoBox">
+                        <span class="ch_logo none">채널링 계정을 선택해주세요</span>
+                    </div>
+                    <i></i> <!-- fold, unfold btn -->
+                </div>
+                <div class="ch_sBox">
+                    <ul>
+                        <li><a href="#n1" class="logoBox"><span class="ch_logo ac">actoz</span></a></li>
+                        <li><a href="#n2" class="logoBox"><span class="ch_logo na">naver</span></a></li>
+                        <li><a href="#n3" class="logoBox"><span class="ch_logo nx">nexon</span></a></li>
+                        <li><a href="#n4" class="logoBox"><span class="ch_logo ka">kakaogames</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- //login channel select -->
+            <!-- channel login_area -->
+            <div class="loginArea">
+                <!-- actoz -->
+                <div class="ch01 actozArea">
+                    <div class="cont1 on">
+                        <!-- login area -->
+                        <div class="login_area">
+                            <input type="text" placeholder="아이디" />
+                            <input type="password" placeholder="비밀번호" />
+                            <div class="id_chk">
+                                <input type="checkbox" name="id_chk01" id="id_chk01">
+                                <label for="id_chk01">아이디 저장</label>
+                            </div>
+                        </div>
+                        <!-- //login area -->
+                        <!-- captcha -->
+                        <div class="captcha">
+                            <div class="BDC_CaptchaDiv " id="LauncherLoginCaptcha_CaptchaDiv" style="width: 268px !important; height: 40px !important; padding: 15px; border: 1px solid rgba(255,255,255,.2);">
+                                <div class="BDC_CaptchaImageDiv" id="LauncherLoginCaptcha_CaptchaImageDiv" style="display: inline-block; width: 180px !important; height: 40px !important;">
+                                    <img id="LauncherLoginCaptcha_CaptchaImage" alt="Retype the CAPTCHA code from the image" src="#" style="width: 180px !important; height: 40px !important;">
+                                </div>
+                                <div class="BDC_CaptchaIconsDiv" id="LauncherLoginCaptcha_CaptchaIconsDiv" style="display: inline-block; width: 83px !important; margin-left: 2px;">
+                                    <a class="BDC_ReloadLink" id="LauncherLoginCaptcha_ReloadLink" href="#" title="Change the CAPTCHA code" style="display: inline-block !important;">
+                                        <img class="BDC_ReloadIcon" id="LauncherLoginCaptcha_ReloadIcon" src="img/login/btn_refresh_off.png" alt="Change the CAPTCHA code">
+                                    </a>
+                                    <a class="BDC_SoundLink" id="LauncherLoginCaptcha_SoundLink" href="" title="Speak the CAPTCHA code" rel="nofollow">
+                                        <img class="BDC_SoundIcon" id="LauncherLoginCaptcha_SoundIcon" src="img/login/btn_sound_off.png" alt="Speak the CAPTCHA code">
+                                    </a>
+                                    <div class="BDC_Placeholder" id="LauncherLoginCaptcha_AudioPlaceholder"></div>
+                                </div>
+                            </div>
+                            <input class="ipt_code" type="text" id="CaptchaCode" name="CaptchaCode" onkeydown="onKeyDown()" maxlength="5" tabindex="1" autocomplete="off" placeholder="자동 입력 방지">
+                        </div>
+                        <!-- //captcha -->
+                        <!-- alert text area  -->
+                        <div class="alert_txt">
+                            <p>등록되지 않은 아이디이거나,<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다.</p>
+                            <!-- <p>올바른 정보를 입력해주세요.</p> -->
+                        </div>
+                        <!-- //alert text area  -->
+                        <!-- login btn_ join,find pw, find id -->
+                        <div class="btn_area">
+                            <button type="button" class="btn_login" onfocus="blur();">로그인</button>
+                            <ul>
+                                <li><a href="https://www.ff14.co.kr/member/Account/" target="_blank">회원가입</a></li>
+                                <li><a href="https://www.ff14.co.kr/member/Account/Search/IDPWDSearch.aspx" target="_blank">아이디/비밀번호 찾기</a></li>
+                            </ul>
+                        </div>
+                        <!-- //login btn_ join,find pw, find id -->
+                    </div>
+                    <div class="cont2">
+                        <p>U-OTP 인증번호</p>
+                        <div class="uotp_area">
+                            <input type="text" placeholder="인증 번호 입력" />
+                            <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
+                        </div>
+                        <div class="alert_txt">
+                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                        </div>
+                        <div class="btn_area">
+                            <ul>
+                                <li><a href="https://www.ff14.co.kr/support/faq" target="_blank">FAQ</a></li>
+                                <li><a href="https://www.ff14.co.kr/support/qna" target="_blank">1:1 메일 문의</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- sns btn -->
+                    <div class="sns_area">
+                        <ul>
+                            <li><a href="https://www.ff14.co.kr/main" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
+                            <li><a href="https://www.instagram.com/ffxiv_kr/" class="ico_inst" target="_blank">instagram</a></li>
+                            <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" class="ico_fb" target="_blank">facebook</a></li>
+                            <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" class="ico_yt" target="_blank">youtube</a></li>
+                            <li><a href="https://twitter.com/FFXIV_KOREA" class="ico_tw" target="_blank">twiter</a></li>
+                        </ul>
+                    </div>
+                    <!-- //sns btn -->
+                </div>
+
+                <!-- naver -->
+                <div class="ch02 naverArea">
+                    <div class="cont1 on">
+                        <!-- login area -->
+                        <div class="login_area">
+                            <input type="text" placeholder="아이디" />
+                            <input type="password" placeholder="비밀번호" />
+                            <div class="id_chk">
+                                <input type="checkbox" name="id_chk02" id="id_chk02">
+                                <label for="id_chk02">아이디 저장</label>
+                            </div>
+                        </div>
+                        <!-- //login area -->
+                        <!-- alert text area  -->
+                        <div class="alert_txt">
+                            <p>등록되지 않은 아이디이거나,<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다.</p>
+                            <!-- <p>올바른 정보를 입력해주세요.</p> -->
+                        </div>
+                        <!-- //alert text area  -->
+                        <!-- login btn_ join,find pw, find id -->
+                        <div class="btn_area">
+                            <button type="button" class="btn_login" onfocus="blur();">로그인</button>
+                            <ul>
+                                <li><a href="https://nid.naver.com/user2/V2Join.nhn?m=agree&lang=ko_KR&cpno=" target="_blank">회원가입</a></li>
+                                <li><a href="https://nid.naver.com/user2/help/idInquiry.nhn?menu=idinquiry" target="_blank">아이디/</a><a href="https://nid.naver.com/user2/help/pwInquiry.nhn?menu=pwinquiry" target="_blank"z>비밀번호 찾기</a></li>
+                            </ul>
+                        </div>
+                        <!-- //login btn_ join,find pw, find id -->
+                    </div>
+                    <div class="cont2">
+                        <p>회원님께서는 OTP 서비스를 이용하고 계십니다.<br>OTP 인증번호를 입력해 주세요.</p>
+                        <div class="uotp_area">
+                            <input type="text" placeholder="인증 번호 입력" />
+                            <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
+                        </div>
+                        <div class="alert_txt">
+                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                        </div>
+                        <div class="btn_area">
+                            <ul>
+                                <li><a href="https://help.naver.com" target="_blank">도움말</a></li>
+                                <li><a href="#n" target="_blank">OTP 해지</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- sns btn -->
+                    <div class="sns_area">
+                        <ul>
+                            <li><a href="https://ff14.game.naver.com/main" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
+                            <li><a href="https://www.instagram.com/ffxiv_kr/" class="ico_inst" target="_blank">instagram</a></li>
+                            <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" class="ico_fb" target="_blank">facebook</a></li>
+                            <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" class="ico_yt" target="_blank">youtube</a></li>
+                            <li><a href="https://twitter.com/FFXIV_KOREA" class="ico_tw" target="_blank">twiter</a></li>
+                        </ul>
+                    </div>
+                    <!-- //sns btn -->
+                </div>
+
+                <!-- nexon -->
+                <div class="ch03 nexonArea">
+                    <div class="cont1 on">
+                        <!-- login area -->
+                        <div class="login_area">
+                            <input type="text" placeholder="아이디" />
+                            <input type="password" placeholder="비밀번호" />
+                            <div class="id_chk">
+                                <input type="checkbox" name="id_chk03" id="id_chk03">
+                                <label for="id_chk03">아이디 저장</label>
+                            </div>
+                        </div>
+                        <!-- //login area -->
+                        <!-- alert text area  -->
+                        <div class="alert_txt">
+                            <p>등록되지 않은 아이디이거나,<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다.</p>
+                            <!-- <p>올바른 정보를 입력해주세요.</p> -->
+                        </div>
+                        <!-- //alert text area  -->
+                        <!-- login btn_ join,find pw, find id -->
+                        <div class="btn_area">
+                            <button type="button" class="btn_login" onfocus="blur();">로그인</button>
+                            <ul>
+                                <li><a href="https://member.nexon.com/join/join.aspx?pagetype=2&accesscode=2000055001" target="_blank">회원가입</a></li>
+                                <li><a href="https://member.nexon.com/find/findid.aspx" target="_blank">아이디/비밀번호 찾기</a></li>
+                            </ul>
+                        </div>
+                        <!-- //login btn_ join,find pw, find id -->
+                    </div>
+                    <!-- sns btn -->
+                    <div class="sns_area">
+                        <ul>
+                            <li><a href="https://www.ff14.co.kr/main" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
+                            <li><a href="https://www.instagram.com/ffxiv_kr/" class="ico_inst" target="_blank">instagram</a></li>
+                            <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" class="ico_fb" target="_blank">facebook</a></li>
+                            <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" class="ico_yt" target="_blank">youtube</a></li>
+                            <li><a href="https://twitter.com/FFXIV_KOREA" class="ico_tw" target="_blank">twiter</a></li>
+                        </ul>
+                    </div>
+                    <!-- //sns btn -->
+                </div>
+                
+                <!-- kakao -->
+                <div class="ch04 kakaoArea">
+                    <div class="cont1 on">
+                        <!-- login area -->
+                        <div class="login_area">
+                            <p>카카오게임즈 계정으로 로그인 합니다.</p>
+                            <p>로그인 버튼을 눌러 아이디/비밀번호를<br>입력해주세요.</p>
+                        </div>
+                        <!-- //login area -->
+                        <!-- login btn_ join,find pw, find id -->
+                        <div class="btn_area">
+                            <button type="button" class="btn_login" onfocus="blur();">로그인</button>
+                            <ul>
+                                <li><a href="http://game.daum.net/bridge/?url=http%3A%2F%2Fff14.game.daum.net%2FserviceInterface%3Fac%3DRegisterMember" target="_blank">회원가입</a></li>
+                                <li><a href="http://game.daum.net/bridge/?url=http%3A%2F%2Fff14.game.daum.net%2FserviceInterface%3Fac%3DFindID" target="_blank">아이디/비밀번호 찾기</a></li>
+                            </ul>
+                        </div>
+                        <!-- //login btn_ join,find pw, find id -->
+                    </div>
+                    <!-- sns btn -->
+                    <div class="sns_area">
+                        <ul>
+                            <li><a href="http://game.daum.net/cn/ff14?t__nil_gamecate=rpg&nil_id=42" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
+                            <li><a href="https://www.instagram.com/ffxiv_kr/" class="ico_inst" target="_blank">instagram</a></li>
+                            <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" class="ico_fb" target="_blank">facebook</a></li>
+                            <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" class="ico_yt" target="_blank">youtube</a></li>
+                            <li><a href="https://twitter.com/FFXIV_KOREA" class="ico_tw" target="_blank">twiter</a></li>
+                        </ul>
+                    </div>
+                    <!-- //sns btn -->
+                </div>
+                
+                <!-- date center -->
+                <div class="dateArea">
+                    <div class="cont1 on">
+                        <!-- login area -->
+                        <div class="login_area">
+                            <input type="text" placeholder="아이디" />
+                            <input type="password" placeholder="비밀번호" />
+                            <div class="id_chk">
+                                <input type="checkbox" name="id_chk05" id="id_chk05">
+                                <label for="id_chk05">아이디 저장</label>
+                            </div>
+                        </div>
+                        <!-- //login area -->
+                        <!-- captcha -->
+                        <div class="captcha">
+                            <div class="BDC_CaptchaDiv " id="LauncherLoginCaptcha_CaptchaDiv" style="width: 268px !important; height: 40px !important; padding: 15px; border: 1px solid rgba(255,255,255,.2);">
+                                <div class="BDC_CaptchaImageDiv" id="LauncherLoginCaptcha_CaptchaImageDiv" style="display: inline-block; width: 180px !important; height: 40px !important;">
+                                    <img id="LauncherLoginCaptcha_CaptchaImage" alt="Retype the CAPTCHA code from the image" src="#" style="width: 180px !important; height: 40px !important;">
+                                </div>
+                                <div class="BDC_CaptchaIconsDiv" id="LauncherLoginCaptcha_CaptchaIconsDiv" style="display: inline-block; width: 83px !important; margin-left: 2px;">
+                                    <a class="BDC_ReloadLink" id="LauncherLoginCaptcha_ReloadLink" href="#" title="Change the CAPTCHA code" style="display: inline-block !important;">
+                                        <img class="BDC_ReloadIcon" id="LauncherLoginCaptcha_ReloadIcon" src="img/login/btn_refresh_off.png" alt="Change the CAPTCHA code">
+                                    </a>
+                                    <a class="BDC_SoundLink" id="LauncherLoginCaptcha_SoundLink" href="" title="Speak the CAPTCHA code" rel="nofollow">
+                                        <img class="BDC_SoundIcon" id="LauncherLoginCaptcha_SoundIcon" src="img/login/btn_sound_off.png" alt="Speak the CAPTCHA code">
+                                    </a>
+                                    <div class="BDC_Placeholder" id="LauncherLoginCaptcha_AudioPlaceholder"></div>
+                                </div>
+                            </div>
+                            <input class="ipt_code" type="text" id="CaptchaCode" name="CaptchaCode" onkeydown="onKeyDown()" maxlength="5" tabindex="1" autocomplete="off" placeholder="자동 입력 방지">
+                        </div>
+                        <!-- //captcha -->
+                        <!-- alert text area  -->
+                        <div class="alert_txt">
+                            <!-- <p>등록되지 않은 아이디이거나,<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다.</p> -->
+                            <!-- <p>올바른 정보를 입력해주세요.</p> -->
+                        </div>
+                        <!-- //alert text area  -->
+                        <!-- login btn_ join,find pw, find id -->
+                        <div class="btn_area">
+                            <button type="button" class="btn_login" onfocus="blur();">로그인</button>
+                            <ul>
+                                <li><a href="https://dev.ff14.co.kr/member/Account/" target="_blank">회원가입</a></li>
+                                <li><a href="https://dev.ff14.co.kr/member/Account/Search/IDPWDSearch.aspx" target="_blank">아이디/비밀번호 찾기</a></li>
+                            </ul>
+                        </div>
+                        <!-- //login btn_ join,find pw, find id -->
+                    </div>
+                    <div class="cont2">
+                        <p>U-OTP 인증번호</p>
+                        <div class="uotp_area">
+                            <input type="text" placeholder="인증 번호 입력" />
+                            <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
+                        </div>
+                        <div class="alert_txt">
+                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                        </div>
+                        <div class="btn_area">
+                            <ul>
+                                <li><a href="https://dev.ff14.co.kr/support/faq" target="_blank">FAQ</a></li>
+                                <li><a href="https://dev.ff14.co.kr/support/qna" target="_blank">1:1 메일 문의</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- sns btn -->
+                    <div class="sns_area">
+                        <ul>
+                            <li><a href="https://dev.ff14.co.kr/main" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
+                            <li><a href="https://www.instagram.com/ffxiv_kr/" class="ico_inst" target="_blank">instagram</a></li>
+                            <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" class="ico_fb" target="_blank">facebook</a></li>
+                            <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" class="ico_yt" target="_blank">youtube</a></li>
+                            <li><a href="https://twitter.com/FFXIV_KOREA" class="ico_tw" target="_blank">twiter</a></li>
+                        </ul>
+                    </div>
+                    <!-- //sns btn -->
+                </div>
+            </div>
+            <!-- //channel login_area -->
+
+            <div class="dim"></div>
+        </div>
     </body>
 </html>
