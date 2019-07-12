@@ -20,10 +20,10 @@ var src = 'src';
 var dist = 'dist';
 
 var paths = {
-	js: src + '/js/*.js',
+	js: src + '/js/**/*.js',
 	jsLib: src + '/js/lib/*.js',
 	json: src + '/json/*.json',
-	scss: src + '/scss/*.scss',
+	scss: src + '/scss/**/*.scss',
 	scssLib: src + '/scss/lib/*.*',
 	html: src + '/**/*.html',
 	img: src + '/img/**/*.*',
@@ -118,8 +118,8 @@ gulp.task('watch', function () {
 
 // build
 gulp.task('build', gulp.series(
-	/*'server',*/ 'combine-js', 'compile-sass', 'compress-html', 'image', 'sprite' ));
+	/*'server',*/ 'sprite', 'combine-js', 'compile-sass', 'compress-html', 'image' ));
 
 // 기본 task 설정
 gulp.task('default', gulp.series(
-	'server', /*'combine-js', 'compile-sass', 'compress-html', 'image',*/ 'watch', 'sprite' ));
+	'server', /*'combine-js', 'compile-sass', 'compress-html', 'image',*/  'sprite', 'watch' ));
