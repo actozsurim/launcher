@@ -1,24 +1,19 @@
-$("document").ready(function(){
+$("document").ready(() => {
     // LNB 펼치기/접기
     var lnb = $("#lnb");
     var btnFold = $(".btn_fold");
     btnFold.on("click", () => {
         if (lnb.hasClass("fold")) {        
-            lnb.animate({width: 265}, 200, function(){
-                //$("#content").animate({width: $("#launcher_wrap").width() - $("#lnb").width()})
+            lnb.animate({width: 265}, 200, "easeOutQuint", function(){
                 lnb.removeClass("fold");
             });
             btnFold.removeClass("on");
         } else {
-            lnb.animate({width: 130}, 200, function(){
-                //$("#content").animate({width: $("#launcher_wrap").width() - $("#lnb").width()})
+            lnb.animate({width: 130}, 200, "easeOutQuint", function(){
             }).addClass("fold");
             btnFold.addClass("on");
-            
         }
     });
-                   
-    $(".scroll-js").mCustomScrollbar({theme:"light-2"});
 
     // LNB내 PC방 혜택 아코디언
     var foldPc = $("#foldPc");
@@ -26,15 +21,79 @@ $("document").ready(function(){
     foldPc.on("click", () => {
         if (follWrap.hasClass("fold")) {
             follWrap.removeClass("fold");
-            foldPc.siblings().animate({height: foldPc.height(), martinTop: 4}, 200, );
+            foldPc.siblings().animate({height: foldPc.height(), martinTop: 4}, 200, "easeOutCubic");
         } else {
             follWrap.addClass("fold");
-            foldPc.siblings().animate({height: 0, martinTop: 0}, 200);
+            foldPc.siblings().animate({height: 0, martinTop: 0}, 200, "easeOutCubic");
         }
+    });
+
+    //scrollbar, masonry
+    $(".scroll-js").mCustomScrollbar({theme:"default"});    
+    $("#content-blocks").masonry({
+        itemSelector : ".block", 
+        columnWidth : 488
+    });
+
+    //blocks 높이
+    $("#blocks").css({
+        height: $("#content").height() - ($(".progress_wrap").innerHeight() + 10)
+    });
+
+    // toast popup
+    var toast = $("#toast li");
+    var toastLength = toast.length;
+    setTimeout(function() {
+        var toastAction = setInterval(function(){ 
+            toastLength -= 1; 
+            console.log(toastLength)
+            toast.eq(toastLength).animate({
+                top: 0,
+                opacity: 1
+            }, 400, "easeOutBack");      
+            if (toastLength <= 0) {
+                clearInterval(toastAction);
+                setTimeout(toastRemove);
+            }
+        }, 300)
+    }, 2000);
+    var toastRemove = setTimeout(function() {
+        toastLength = toast.length;
+        var toastAction = setInterval(function(){ 
+            toastLength -= 1;    
+            console.log(toastLength)
+            toast.eq(toastLength).animate({
+                right: -200,
+                opacity: 0
+            }, 200, "easeOutCirc");   
+            if (toastLength <= 0) {
+                clearInterval(toastAction);
+                $("#toast").fadeOut();
+            }
+        }, 100);        
+    }, 8000);
+    $("#toast .close").on("click", (e) => {
+        //console.log(e.target)
+        $(e.target).closest("li").hide();
+    });
+
+    //copyright
+    var dateGet = new Date();
+    $(".copyright .years").text(dateGet.getFullYear());
+
+    //home
+    $(".home").on("click", (e) => {
+        e.preventDefault();
+        $("#mCSB_1_container").animate({
+            top: 0
+        }, 600, "easeOutCubic");
+        $("#mCSB_1_dragger_vertical").animate({
+            top: 0
+        }, 300, "easeOutCubic");
     })
-})
+});
 
 
 
-$(window).resize(function(){
+$(window).resize(() => {
 });

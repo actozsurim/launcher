@@ -6,9 +6,11 @@
         <link rel="stylesheet" type="text/css" href="../../css/launcher.css"  />
         <link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.css" />
         <script type="text/javascript" src="../../js/lib/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="../../js/lib/jquery.easing.min.js"></script>
         <script type="text/javascript" src="../../js/launcher.js"></script>
         <script type="text/javascript" src="../../js/lib/loginCheck.js"></script>
         <script type="text/javascript" src="../../js/lib/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="../../js/lib/masonry.pkgd.min.js"></script>
     </head>
     <body>
         <div id="launcher_wrap">
@@ -27,7 +29,7 @@
             <!--LNB-->
             <div id="lnb">
                 <!--유저 정보-->
-                <div class="user" id="pcroom"><!-- pc방일 경우 id="pcroom" 붙이기 -->
+                <div class="user"><!-- pc방 접속일 경우 id="pcroom" 붙이기 -->
                     <div class="photo">
                         <div class="fire_on pc"></div>
                         <div class="fire_off not-pc"></div>
@@ -189,11 +191,11 @@
             <!--//LNB-->
             
             <!--LNB: pc방 자동실행일 경우-->
-            <div id="lnb" class="pc_auto hidden">
+            <div id="lnb" class="pc_auto" style="display: none;">
                 <!--자동 패치-->
                 <div class="patch">
                     <div class="icon icon-patch-fire">
-                        <i class="icon ">로딩 아이콘 넣어야함</i>
+                        <i class="icon icon-loading-02"></i>
                     </div>
                     <p class="white">PC방 자동 패치 <br />진행중입니다.</p>
                     <p class="grey">패치가 완료되면 <br />자동으로 런처를 종료합니다.</p>
@@ -272,7 +274,7 @@
                 <!--상단 프로그레스 바 영역-->
                 <div class="progress_wrap">
                     <ul class="menu">
-                        <li><a href="#">홈</a></li>
+                        <li><a href="#" class="home">홈</a></li>
                         <li><a href="https://www.ff14.co.kr/news/notice" target="_blank">새소식</a></li>
                         <li><a href="https://www.ff14.co.kr/shop" target="_blank">크리스탈샵</a></li>
                     </ul>
@@ -378,33 +380,110 @@
                 </div>
                 <!--//상단 프로그레스 바 영역-->
                 <!--컨텐츠 블록-->
-                <div class="blocks scroll-js">
-                    <h1><img src="../../img/launcher/logo.png" alt="FINAL FANTASY XIV | 칠흑의 반역자" /></h1>
-                    
-                    <div style="background: #fff; height: 1500px;">sdfsdfsdfsdfsdf sdfsdfsdfsdfsdf sdfsdfsdfsdfsdf sdfsdfsdfsdfsdf sdfsdfsdfsdfsdf sdfsdfsdfsdfsdf </div>
-
+                <div id="blocks" class="scroll-js">
+                    <h1 id="logo"><span></span></h1>
+                    <!--블록형 리스트-->
+                    <ul id="content-blocks">
+                        <li class="block">
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <img src="https://image.ff14.co.kr/event/fun/2019/julshop/img/a-72f3-c394/s-_bf3-ea_a.png?688c2007bc50b0e167d070781f7581bc" />
+                                <p><em class="title">2019 팬페스티벌 서울 QnA 안내</em></p>
+                                <p class="desc">모험가 여러분들께서 보여주신 성원에 진심으로 감사의 말씀 전해 드립니다. <br />        자세한 사항은 아래를 통해 확인해 주시기 바랍니다.</p>
+                                <p class="date">기간 : 2019년 06월 03일(화) ~ 팬페스티벌 전까지</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <p><em class="title">크리스탈샵 서버 점검 완료 안내</em></p>
+                                <p class="desc">크리스탈샵 서버 점검, 현대카드 결제 정상화</p>
+                                <p class="date">일시 : 2019년 5월 30일(목) 14:00 ~ 16:30 (2시간 30분)</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <!--동영상은 a태그 바깥에-->
+                            <iframe src="https://www.youtube.com/embed/FFd3kLXPJ-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <p><em class="title">2019 팬페스티벌 서울 QnA 안내</em></p>
+                                <p class="desc">모험가 여러분들께서 보여주신 성원에 진심으로 감사의 말씀 전해 드립니다. <br />        자세한 사항은 아래를 통해 확인해 주시기 바랍니다.</p>
+                                <p class="date">기간 : 2019년 06월 03일(화) ~ 팬페스티벌 전까지</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <img src="http://static.ff14.co.kr/Contents/2019/04/44AEEDD8D4B09DC84247BB544296C38FD6F1E60A0388FA574CFD7BB7833DB9F8.jpg" />
+                                <p><em class="title">2019 팬페스티벌 서울 QnA 안내</em></p>
+                                <p class="desc">모험가 여러분들께서 보여주신 성원에 진심으로 감사의 말씀 전해 드립니다. <br />        자세한 사항은 아래를 통해 확인해 주시기 바랍니다.</p>
+                                <p class="date">기간 : 2019년 06월 03일(화) ~ 팬페스티벌 전까지</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <p><em class="title">크리스탈샵 서버 점검 완료 안내</em></p>
+                                <p class="desc">크리스탈샵 서버 점검, 현대카드 결제 정상화</p>
+                                <p class="date">일시 : 2019년 5월 30일(목) 14:00 ~ 16:30 (2시간 30분)</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <iframe src="https://www.youtube.com/embed/FFd3kLXPJ-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <p><em class="title">2019 팬페스티벌 서울 QnA 안내</em></p>
+                                <p class="desc">모험가 여러분들께서 보여주신 성원에 진심으로 감사의 말씀 전해 드립니다. <br />        자세한 사항은 아래를 통해 확인해 주시기 바랍니다.</p>
+                                <p class="date">기간 : 2019년 06월 03일(화) ~ 팬페스티벌 전까지</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <p><em class="title">크리스탈샵 서버 점검 완료 안내</em></p>
+                                <p class="desc">크리스탈샵 서버 점검, 현대카드 결제 정상화</p>
+                                <p class="date">일시 : 2019년 5월 30일(목) 14:00 ~ 16:30 (2시간 30분)</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <img src="https://scontent-frt3-1.cdninstagram.com/vp/fd484fa1852eb8333fb58c13fd45ef65/5DB23219/t51.2885-15/e35/c251.0.578.578a/s320x320/65271524_345254976166526_4899838916444002582_n.jpg?_nc_ht=scontent-frt3-1.cdninstagram.com&ig_cache_key=MjA4MTc3NjU2ODk1MTkzNzYzOA%3D%3D.2.c" />
+                                <p><em class="title">2019 팬페스티벌 서울 QnA 안내</em></p>
+                                <p class="desc">모험가 여러분들께서 보여주신 성원에 진심으로 감사의 말씀 전해 드립니다. <br />        자세한 사항은 아래를 통해 확인해 주시기 바랍니다.</p>
+                                <p class="date">기간 : 2019년 06월 03일(화) ~ 팬페스티벌 전까지</p>
+                            </a>
+                        </li>
+                        <li class="block">
+                            <iframe src="https://www.youtube.com/embed/FFd3kLXPJ-Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <a href="https://www.ff14.co.kr/news/notice/view/1432?page=1" target="_blank">
+                                <p><em class="title">2019 팬페스티벌 서울 QnA 안내</em></p>
+                                <p class="desc">모험가 여러분들께서 보여주신 성원에 진심으로 감사의 말씀 전해 드립니다. <br />        자세한 사항은 아래를 통해 확인해 주시기 바랍니다.</p>
+                                <p class="date">기간 : 2019년 06월 03일(화) ~ 팬페스티벌 전까지</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--//블록형 리스트-->
+                    <p class="copyright">&copy;2010 - <span class="years"></span> SQUARE ENIX CO., LTD. All Rights Reserved. Published in Korea by Actoz Soft CO., LTD.</p>
                 </div>
                 <!--//컨텐츠 블록-->
 
                 <!--토스트 팝업-->
-                <ul class="toast">
+                <!--정렬순서: 늦은날짜→이른날짜 순으로 내림차순-->
+                <ul id="toast">
                     <li>
                         <p class="notice"><i class="icon icon-toast"></i>현재 정액제 이용권 잔여기간이 3일 남았습니다.</p>
-                        <p class="date">2019년 7월 23일 24:00</p>
+                        <p class="date">2019년 7월 26일 00:00</p>
+                        <div class="close"><span>토스트팝업 닫기</span></div>
+                    </li>
+                    <li>
+                        <p class="notice"><i class="icon icon-toast"></i>선물 받은 아이템이 있습니다. 선물 받은 아이템이 있습니다
+                        </p>
+                        <p class="date">2019년 7월 25일 00:00</p>
+                        <div class="close"><span>토스트팝업 닫기</span></div>
+                    </li>
+                    <li>
+                        <p class="notice"><i class="icon icon-toast"></i>현재 정액제 이용권 잔여기간이 3일 남았습니다.</p>
+                        <p class="date">2019년 7월 24일 00:00</p>
+                        <div class="close"><span>토스트팝업 닫기</span></div>
                     </li>
                     <li>
                         <p class="notice"><i class="icon icon-toast"></i>선물 받은 아이템이 있습니다.
                         </p>
-                        <p class="date">2019년 7월 23일 24:00</p>
-                    </li>
-                    <li>
-                        <p class="notice"><i class="icon icon-toast"></i>현재 정액제 이용권 잔여기간이 3일 남았습니다.</p>
-                        <p class="date">2019년 7월 23일 24:00</p>
-                    </li>
-                    <li>
-                        <p class="notice"><i class="icon icon-toast"></i>선물 받은 아이템이 있습니다.
-                        </p>
-                        <p class="date">2019년 7월 23일 24:00</p>
+                        <p class="date">2019년 7월 23일 00:00</p>
+                        <div class="close"><span>토스트팝업 닫기</span></div>
                     </li>
                 </ul>
                 <!--//토스트 팝업-->

@@ -52,7 +52,12 @@ a, em, strong {
 /* Font */
 $fontLight: 'Noto Sans KR Light', '돋움', Arial, Helvetica, sans-serif;
 $fontRegular: 'Noto Sans KR Regular', '돋움', Arial, Helvetica, sans-serif;
-$font9: 0.9em;
+@mixin fontLight {
+	font-family: 'Noto Sans KR Light', '돋움', Arial, Helvetica, sans-serif;;
+}
+@mixin fontRegular {
+	font-family: 'Noto Sans KR Regular', '돋움', Arial, Helvetica, sans-serif;
+}
 
 /* css */
 .hidden {display: none !important;}
