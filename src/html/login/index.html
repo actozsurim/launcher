@@ -68,7 +68,7 @@
                                     <a class="BDC_ReloadLink" id="LauncherLoginCaptcha_ReloadLink" href="#" title="Change the CAPTCHA code" style="display: inline-block !important;">
                                         <img class="BDC_ReloadIcon" id="LauncherLoginCaptcha_ReloadIcon" src="img/login/btn_refresh_off.png" alt="Change the CAPTCHA code">
                                     </a>
-                                    <a class="BDC_SoundLink" id="LauncherLoginCaptcha_SoundLink" href="" title="Speak the CAPTCHA code" rel="nofollow">
+                                    <a class="BDC_SoundLink" id="LauncherLoginCaptcha_SoundLink" href="" title="Speak the CAPTCHA code" rel="nofollow" style="display: inline-block !important;">
                                         <img class="BDC_SoundIcon" id="LauncherLoginCaptcha_SoundIcon" src="img/login/btn_sound_off.png" alt="Speak the CAPTCHA code">
                                     </a>
                                     <div class="BDC_Placeholder" id="LauncherLoginCaptcha_AudioPlaceholder"></div>
@@ -277,7 +277,84 @@
                                     <a class="BDC_ReloadLink" id="LauncherLoginCaptcha_ReloadLink" href="#" title="Change the CAPTCHA code" style="display: inline-block !important;">
                                         <img class="BDC_ReloadIcon" id="LauncherLoginCaptcha_ReloadIcon" src="img/login/btn_refresh_off.png" alt="Change the CAPTCHA code">
                                     </a>
-                                    <a class="BDC_SoundLink" id="LauncherLoginCaptcha_SoundLink" href="" title="Speak the CAPTCHA code" rel="nofollow">
+                                    <a class="BDC_SoundLink" id="LauncherLoginCaptcha_SoundLink" href="" title="Speak the CAPTCHA code" rel="nofollow" style="display: inline-block !important;">
+                                        <img class="BDC_SoundIcon" id="LauncherLoginCaptcha_SoundIcon" src="img/login/btn_sound_off.png" alt="Speak the CAPTCHA code">
+                                    </a>
+                                    <div class="BDC_Placeholder" id="LauncherLoginCaptcha_AudioPlaceholder"></div>
+                                </div>
+                            </div>
+                            <input class="ipt_code" type="text" id="CaptchaCode" name="CaptchaCode" onkeydown="onKeyDown()" maxlength="5" tabindex="1" autocomplete="off" placeholder="자동 입력 방지">
+                        </div>
+                        <!-- //captcha -->
+                        <!-- alert text area  -->
+                        <div class="alert_txt">
+                            <!-- <p>등록되지 않은 아이디이거나,<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다.</p> -->
+                            <!-- <p>올바른 정보를 입력해주세요.</p> -->
+                        </div>
+                        <!-- //alert text area  -->
+                        <!-- login btn_ join,find pw, find id -->
+                        <div class="btn_area">
+                            <button type="button" class="btn_login" onfocus="blur();">로그인</button>
+                            <ul>
+                                <li><a href="https://dev.ff14.co.kr/member/Account/" target="_blank">회원가입</a></li>
+                                <li><a href="https://dev.ff14.co.kr/member/Account/Search/IDPWDSearch.aspx" target="_blank">아이디/비밀번호 찾기</a></li>
+                            </ul>
+                        </div>
+                        <!-- //login btn_ join,find pw, find id -->
+                    </div>
+                    <div class="cont2">
+                        <p>U-OTP 인증번호</p>
+                        <div class="uotp_area">
+                            <input type="text" placeholder="인증 번호 입력" />
+                            <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
+                        </div>
+                        <div class="alert_txt">
+                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                        </div>
+                        <div class="btn_area">
+                            <ul>
+                                <li><a href="https://dev.ff14.co.kr/support/faq" target="_blank">FAQ</a></li>
+                                <li><a href="https://dev.ff14.co.kr/support/qna" target="_blank">1:1 메일 문의</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- sns btn -->
+                    <div class="sns_area">
+                        <ul>
+                            <li><a href="https://dev.ff14.co.kr/main" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
+                            <li><a href="https://www.instagram.com/ffxiv_kr/" class="ico_inst" target="_blank">instagram</a></li>
+                            <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" class="ico_fb" target="_blank">facebook</a></li>
+                            <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" class="ico_yt" target="_blank">youtube</a></li>
+                            <li><a href="https://twitter.com/FFXIV_KOREA" class="ico_tw" target="_blank">twiter</a></li>
+                        </ul>
+                    </div>
+                    <!-- //sns btn -->
+                </div>
+                
+                <!-- core -->
+                <div class="coreArea">
+                    <div class="cont1 on">
+                        <!-- login area -->
+                        <div class="login_area">
+                            <input type="text" placeholder="아이디" />
+                            <input type="password" placeholder="비밀번호" />
+                            <div class="id_chk">
+                                <input type="checkbox" name="id_chk05" id="id_chk05">
+                                <label for="id_chk05">아이디 저장</label>
+                            </div>
+                        </div>
+                        <!-- //login area -->
+                        <!-- captcha -->
+                        <div class="captcha">
+                            <div class="BDC_CaptchaDiv " id="LauncherLoginCaptcha_CaptchaDiv" style="width: 268px !important; height: 40px !important; padding: 15px; border: 1px solid rgba(255,255,255,.2);">
+                                <div class="BDC_CaptchaImageDiv" id="LauncherLoginCaptcha_CaptchaImageDiv" style="display: inline-block; width: 180px !important; height: 40px !important;">
+                                    <img id="LauncherLoginCaptcha_CaptchaImage" alt="Retype the CAPTCHA code from the image" src="#" style="width: 180px !important; height: 40px !important;">
+                                </div>
+                                <div class="BDC_CaptchaIconsDiv" id="LauncherLoginCaptcha_CaptchaIconsDiv" style="display: inline-block; width: 83px !important; margin-left: 2px;">
+                                    <a class="BDC_ReloadLink" id="LauncherLoginCaptcha_ReloadLink" href="#" title="Change the CAPTCHA code" style="display: inline-block !important;">
+                                        <img class="BDC_ReloadIcon" id="LauncherLoginCaptcha_ReloadIcon" src="img/login/btn_refresh_off.png" alt="Change the CAPTCHA code">
+                                    </a>
+                                    <a class="BDC_SoundLink" id="LauncherLoginCaptcha_SoundLink" href="" title="Speak the CAPTCHA code" rel="nofollow" style="display: inline-block !important;">
                                         <img class="BDC_SoundIcon" id="LauncherLoginCaptcha_SoundIcon" src="img/login/btn_sound_off.png" alt="Speak the CAPTCHA code">
                                     </a>
                                     <div class="BDC_Placeholder" id="LauncherLoginCaptcha_AudioPlaceholder"></div>
