@@ -1,3 +1,12 @@
+$(window).on("load", () => {
+    //scrollbar, masonry
+    $(".scroll-js-horizon").mCustomScrollbar({theme:"default", axis:"x"});
+    $(".scroll-js").mCustomScrollbar({theme:"default", axis:"y"});
+    $("#content-blocks").masonry({
+        itemSelector : ".block", 
+        columnWidth : 488
+    });
+});
 $("document").ready(() => {
     // LNB 펼치기/접기
     var lnb = $("#lnb");
@@ -28,13 +37,6 @@ $("document").ready(() => {
         }
     });
 
-    //scrollbar, masonry
-    $(".scroll-js").mCustomScrollbar({theme:"default"});    
-    $("#content-blocks").masonry({
-        itemSelector : ".block", 
-        columnWidth : 488
-    });
-
     //blocks 높이
     $("#blocks").css({
         height: $("#content").height() - ($(".progress_wrap").innerHeight() + 10)
@@ -43,7 +45,9 @@ $("document").ready(() => {
     // toast popup
     var toast = $("#toast li");
     var toastLength = toast.length;
-    setTimeout(function() {
+
+    setTimeout(toastOpen, 2000);
+    function toastOpen() { //toast open
         var toastAction = setInterval(function(){ 
             toastLength -= 1; 
             console.log(toastLength)
@@ -53,25 +57,25 @@ $("document").ready(() => {
             }, 400, "easeOutBack");      
             if (toastLength <= 0) {
                 clearInterval(toastAction);
-                setTimeout(toastRemove);
+                setTimeout(toastRemove, 15000);
             }
         }, 300)
-    }, 2000);
-    var toastRemove = setTimeout(function() {
+    };
+    function toastRemove() { //toast remove
         toastLength = toast.length;
         var toastAction = setInterval(function(){ 
             toastLength -= 1;    
             console.log(toastLength)
             toast.eq(toastLength).animate({
-                right: -200,
+                right: -400,
                 opacity: 0
-            }, 200, "easeOutCirc");   
+            }, 600, "easeOutQuart");   
             if (toastLength <= 0) {
                 clearInterval(toastAction);
                 $("#toast").fadeOut();
             }
         }, 100);        
-    }, 8000);
+    };
     $("#toast .close").on("click", (e) => {
         //console.log(e.target)
         $(e.target).closest("li").hide();
