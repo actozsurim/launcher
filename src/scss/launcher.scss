@@ -2,17 +2,21 @@
 @import "./variable.scss"; 
 @import "./sprite.scss";
 
-body {
+html, body {    
+    //min-width: 1360px;
+    //min-height: 850px;
+    overflow: hidden;
     background: #ddeede;
-
 }
 
 #launcher_wrap {
-    width: 1360px;
-    height: 850px;
+    position: relative;
+    min-width: 1360px;
+    min-height: 850px;
     overflow: hidden;
     background: #252525;
     border: 1px solid #3e3e3e;
+    box-sizing: border-box;
     background: #000 url(../img/launcher/bg.png) no-repeat center top;
     /* 기본 셋팅 */
     button {
@@ -27,7 +31,12 @@ body {
     }
     /* //기본 셋팅 */
     .top_bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
         height: 35px;
+        z-index: 3;
         background: #000;
         overflow: hidden;
         .left {
@@ -40,43 +49,53 @@ body {
         }
         .right {
             float: right;
-            padding: 11px 10px 0 0;
+            padding: 0 10px 0 0;
             li {
                 float: left;
                 margin: 0 2px;
-                padding: 0 4px;
+                padding: 11px 4px;
+                cursor: pointer;
                 span {
                     @include noText();
-                    cursor: pointer;
                 }
                 &.setting {
                     span {
                         @include sprite($icon-top-01-off);
-                        &:hover {
-                            @include sprite($icon-top-01-on);
-                        }
                     }
                 }
                 &.minimum {
                     span {
                         @include sprite($icon-top-02-off);
-                        &:hover {
-                            @include sprite($icon-top-02-on);
-                        }
                     }
                 }
                 &.maximum {
                     span {
                         @include sprite($icon-top-03-off);
-                        &:hover {
-                            @include sprite($icon-top-03-on);
-                        }
                     }
                 }
                 &.close {
                     span {
                         @include sprite($icon-top-04-off);
-                        &:hover {
+                    }
+                }
+                &:hover {
+                    &.setting {
+                        span {
+                            @include sprite($icon-top-01-on);
+                        }
+                    }
+                    &.minimum {
+                        span {
+                            @include sprite($icon-top-02-on);
+                        }
+                    }
+                    &.maximum {
+                        span {
+                            @include sprite($icon-top-03-on);
+                        }
+                    }
+                    &.close {
+                        span {
                             @include sprite($icon-top-04-on);
                         }
                     }
@@ -88,11 +107,11 @@ body {
         position: relative;
         float: left;
         width: 265px;
-        height: calc(100% - 35px);
-        //margin: 0 30px 0 0;
-        background: #000;
+        height: 100%;
+        //height: calc(100% - 35px) !important;
+        background: rgba(0,0,0,0.5);
         color: #fff;
-        z-index: 5;
+        z-index: 2;
         border-right: 1px solid #333;
         box-sizing: border-box;
         &.fold {
@@ -166,19 +185,20 @@ body {
         &.pc_auto {
             .patch {
                 padding: 143px 0 120px;
-                .icon-patch-fire {
+                .icon-fire-on {
                     position: relative;
                     display: block;
                     margin: 0 auto;
-                    @include sprite($pacth-fire);
+                    @include sprite($fire-on);
                 }
                 .icon-loading-02 {
                     position: absolute;
                     left: 22px;
-                    top: 33px;
+                    top: 31px;
                     display: block;
                     width: 35px;
                     height: 35px;
+                    border-radius: 50%;
                     background: url(../img/launcher/loading_02.gif) no-repeat 0 0;
                 }
                 .white {
@@ -197,6 +217,7 @@ body {
             position: relative;
             display: table;
             width: 265px;
+            padding: 35px 0 0;
             &#pcroom {
                 .pc {
                     display: block;
@@ -224,7 +245,7 @@ body {
                 //background: pink;
                 .fire_on {
                     position: absolute;
-                    left: 10px;
+                    left: 15px;
                     top: 0;
                     @include sprite($fire-on);
                 }
@@ -250,7 +271,7 @@ body {
                 .icon-pc {
                     position: absolute;
                     bottom: 12px;
-                    left: 33px;
+                    left: 31px;
                     @include noText();
                     @include sprite($ico-pcroom);
                 }
@@ -377,10 +398,11 @@ body {
                         &:not(#foldPc) {
                             overflow: hidden;
                         }
-                        i.icon-plus {
+                        #pcAccodian {
+                            position: absolute;
+                            right: 3px;
+                            top: -1px;
                             display: block;
-                            float: right;
-                            margin: 3px 0 0;
                             @include sprite($icon-plus);
                         }
                     }
@@ -454,13 +476,15 @@ body {
             }
         }
         .sns_wrap {
-            position: absolute;
+            //position: absolute;
+            position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
             padding: 15px 0;
             text-align: center;
             border-top: 1px solid #333;
+            background: #000;
             li {
                 display: inline-block;
                 width: 18px;
@@ -485,9 +509,10 @@ body {
     #content {
         position: relative;
         width: 100%;
-        height: calc(100% - 35px);
+        height: 100%;
+        //height: calc(100% - 35px);
         .progress_wrap {
-            padding: 25px 80px 25px 30px;
+            padding: 60px 80px 25px 30px;
             background: rgba(0,0,0,0.5);
             overflow: hidden;
             border-bottom: 1px solid #333;
@@ -559,13 +584,15 @@ body {
                             height: 50px;
                             overflow: hidden;
                             border-radius: 5px;
+                            &.stop {
+                                .bg {
+                                    background: #9f9f9f !important;
+                                }
+                            }
                             .bg {
                                 position: relative;
                                 height: 100%;
                                 overflow: hidden;
-                                &.stop {
-                                    background: #9f9f9f;
-                                }
                                 &#checking {
                                     background: #333;
                                 }
@@ -623,50 +650,45 @@ body {
                                 cursor: default;
                             }
                             /*버튼 애니메이션*/
-                            .bg:not(.stop) {
-                                $color: #2194E0;
-    
-                                @keyframes sheen {
+                            .bg:not(.stop) { 
+                                @keyframes moving {
                                     0% {
-                                        transform: translateY(0);
-                                        //transform: /*skewX(-45deg)*/ translateX(0);
+                                        transform: translateX(-4px);
                                         transition: none;
                                     }
-                                    50% {
-                                        transform: translateY(50px);
-                                        //transform: /*skewX(-45deg)*/ translateX(23.5em);
+                                    40% {
+                                        transform: translateX(250px);
                                         transition: all 0.5s ease-in-out;
                                     }
-                                    70% {
-                                        transform: translateY(50px);
-                                        //transform: /*skewX(-45deg)*/ translateX(0);
+                                    50% {
+                                        transform: translateX(250px);
+                                        transition: none;
+                                    }
+                                    90% {
+                                        transform: translateX(-4px);
                                         transition: none;
                                     }
                                     100% {
-                                        transform: translateY(0);
-                                        //transform: /*skewX(-45deg)*/ translateX(0);
+                                        transform: translateX(-4px);
                                         transition: none;
                                     }
                                 }    
                                 transition: all 0.2s ease-in-out;
-                                background-color: $color;  
                                 &:after {
                                     content: none;
                                 }
                                 &:before {
                                   content: "";
                                   background-color: rgba(255,255,255,0.5);
-                                  height: 4px;
-                                  width: 100%;
+                                  height: 100%;
+                                  width: 4px;
                                   display: block;
                                   position: absolute;
                                   top: 0;
                                   left: 0;
-                                  //left: -4.5em;
-                                  //transform: skewX(-45deg) translateX(0);
                                   transform: translateY(0);
                                   transition: none;
-                                  animation: sheen 2s infinite;
+                                  animation: moving 3.6s infinite;
                                 }
                             }
                             /*//버튼 애니메이션*/
@@ -676,18 +698,16 @@ body {
             }
         }
         #blocks {
+            height: 100%;
+            height: calc(100% - 136px) !important;
             padding: 0 0 0 30px;
             overflow: hidden;
             #logo {
                 text-align: right;
-                padding: 45px 50px 25px;
-                span {
-                    display: inline-block;
-                    @include sprite($logo);
-                }
+                padding: 45px 60px 25px;
             }
             #content-blocks {
-                margin: 0 0 0 17px;
+                margin: 0 0 0 11px;
                 li {
                     float: left;
                     width: 480px;
@@ -705,13 +725,11 @@ body {
                             -ms-transform: scale(1.05);
                             -o-transform: scale(1.05);
                         }
-                        a {
-                            img {
-                                -webkit-transform: scale(1.05);
-                                -moz-transform: scale(1.05);
-                                -ms-transform: scale(1.05);
-                                -o-transform: scale(1.05);
-                            }
+                        img {
+                            -webkit-transform: scale(1.05);
+                            -moz-transform: scale(1.05);
+                            -ms-transform: scale(1.05);
+                            -o-transform: scale(1.05);
                         }
                     }
                     iframe {
@@ -731,8 +749,8 @@ body {
                         -o-transition: transform .3s;
                         transition: transform .3s;
                     }
-                    > p {
-                        @include fontRegular();
+                    p, p span {
+                        @include fontRegular;
                     }
                     .title {
                         display: block;
@@ -757,7 +775,8 @@ body {
                 }
             }
             .copyright {
-                padding: 60px 80px 4px 0;
+                clear: both;
+                padding: 60px 0 15px;
                 font-size: 12px;
                 letter-spacing: -0.2;
                 color: #fff;
@@ -771,7 +790,8 @@ body {
     }
     #toast {
         position: absolute;
-        right: 15px;
+        right: -300px;
+        //right: 15px;
         bottom: 15px;
         width: 350px;
         li {
@@ -841,6 +861,7 @@ body {
         width: 100%;
         height: 100%;
         background: rgba(0,0,0,0.6);
+        z-index: 5;
     }
     .modal {
         //display: none;
@@ -851,6 +872,7 @@ body {
         background: #333;
         border-radius: 10px;
         overflow: hidden;
+        z-index: 5;
         .text-wrap {
             padding: 26px 30px;
             box-sizing: border-box;
