@@ -3,12 +3,12 @@
         <title>FF14 런처 로그인</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" type="text/css" href="../../../css/launcher_2019.css" id="CssURL"/>
-        <script type="text/javascript" src="../../../js/jquery-1.11.1.js"></script>
-        <script type="text/javascript" src="../../../js/loginCheck.js"></script>
-        <script type="text/javascript" src="../../../js/jquery.bxslider.min.js"></script>
-        <script type="text/javascript" src="../../../js/script.js"></script>
-        <script type="text/javascript" src="../../../js/login_design.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../css/launcher_2019.css" id="CssURL"/>
+        <script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="../../js/loginCheck.js"></script>
+        <script type="text/javascript" src="../../js/jquery.bxslider.min.js"></script>
+        <script type="text/javascript" src="../../js/script.js"></script>
+        <script type="text/javascript" src="../../js/login_design.js"></script>
 
     </head>
     <body>
@@ -24,12 +24,13 @@
             <div class="login"> <!-- 데이터센터 노출 시 class="dc" 추가 -->
                 <div class="ch_select">
                     <!-- 
-                        채널링 선택 전 노출 : <span class="ch_logo none">채널링 계정을 선택해주세요</span>
-                        채널링 선택 후 노출 : <span class="ch_logo"><span>
+                        채널링 선택 전 노출 : <span class="ch_logo ac"></span>
+                        채널링 선택 후 노출 : <span class="ch_logo none">채널링 계정을 선택해주세요</span>
                         채널링 선택 후 채널사 로고 변경 : class="ch_logo"를 유지하면서 ac,na,nx,ka 추가 시 채널사 로고 변경
                     -->
                     <div class="logoBox">
-                        <span class="ch_logo none">채널링 계정을 선택해주세요</span>
+                        <span class="ch_logo ac"></span>
+                        <!-- <span class="ch_logo none">채널링 계정을 선택해주세요</span> -->
                     </div>
                     <i></i> <!-- fold, unfold btn -->
                 </div>
@@ -100,7 +101,7 @@
                             <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
                         </div>
                         <div class="alert_txt">
-                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                            <p>OTP 인증번호가 일치하지 않습니다.</p>
                         </div>
                         <div class="btn_area">
                             <ul>
@@ -123,7 +124,7 @@
                 </div>
 
                 <!-- naver -->
-                <div class="ch02 naverArea">
+                <div class="ch02 naverArea hidden">
                     <div class="cont1 on">
                         <!-- login area -->
                         <div class="login_area">
@@ -158,7 +159,7 @@
                             <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
                         </div>
                         <div class="alert_txt">
-                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                            <p>OTP 인증번호가 일치하지 않습니다.</p>
                         </div>
                         <div class="btn_area">
                             <ul>
@@ -181,7 +182,7 @@
                 </div>
 
                 <!-- nexon -->
-                <div class="ch03 nexonArea">
+                <div class="ch03 nexonArea hidden">
                     <div class="cont1 on">
                         <!-- login area -->
                         <div class="login_area">
@@ -212,7 +213,7 @@
                     <!-- sns btn -->
                     <div class="sns_area">
                         <ul>
-                            <li><a href="https://www.ff14.co.kr/main" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
+                            <li><a href="https://www.ff14.nexon.com/main" class="ico_ff14" target="_blank">FF14 공식홈페이지</a></li>
                             <li><a href="https://www.instagram.com/ffxiv_kr/" class="ico_inst" target="_blank">instagram</a></li>
                             <li><a href="https://www.facebook.com/FINALFANTASYXIV.KOREA" class="ico_fb" target="_blank">facebook</a></li>
                             <li><a href="https://www.youtube.com/channel/UC3nvy3v0XICxexhfhjz1I9A" class="ico_yt" target="_blank">youtube</a></li>
@@ -223,7 +224,7 @@
                 </div>
                 
                 <!-- kakao -->
-                <div class="ch04 kakaoArea">
+                <div class="ch04 kakaoArea hidden">
                     <div class="cont1 on">
                         <!-- login area -->
                         <div class="login_area">
@@ -255,7 +256,7 @@
                 </div>
                 
                 <!-- date center -->
-                <div class="dateArea">
+                <div class="dateArea hidden">
                     <div class="cont1 on">
                         <!-- login area -->
                         <div class="login_area">
@@ -309,7 +310,7 @@
                             <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
                         </div>
                         <div class="alert_txt">
-                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                            <p>OTP 인증번호가 일치하지 않습니다.</p>
                         </div>
                         <div class="btn_area">
                             <ul>
@@ -332,7 +333,7 @@
                 </div>
                 
                 <!-- core -->
-                <div class="coreArea">
+                <div class="coreArea hidden">
                     <div class="cont1 on">
                         <!-- login area -->
                         <div class="login_area">
@@ -386,7 +387,7 @@
                             <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
                         </div>
                         <div class="alert_txt">
-                            <p>OTP 인증번호가 일치하지 않습니다.<br>3G 핸드폰일 경우 시간 설정 이후에<br>다시 시도해주세요.</p>
+                            <p>OTP 인증번호가 일치하지 않습니다.</p>
                         </div>
                         <div class="btn_area">
                             <ul>

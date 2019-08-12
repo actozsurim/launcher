@@ -14,12 +14,14 @@ $(function(){
         $('.dc_tit').text(select_c_name);
     });
 
+///////////////////// 수정 190808
     //채널 선택 시
-    // $('.login.dc .ch_sBox').remove();
+    var divLogobox = $('div.logoBox');
     $('.logoBox').click(function(){
-        $('.ch_select i').toggleClass('on');
-        $('.ch_sBox').toggle();
-        $('.dim').toggle();
+        divLogobox.children('span').removeClass('ac na nx ka');
+        divLogobox.children('span').addClass('none').html('채널링 계정을 선택해주세요');
+        $('.ch_select i').addClass('on');
+        $('.ch_sBox, .dim').show();
     });
     
     //채널선택 시 상단 채널로고 변경
@@ -27,7 +29,10 @@ $(function(){
     select_ch.click(function(){
         var select_ch_name = $(this).find('a').html();
         $('.ch_select div').html(select_ch_name);
+        $('.ch_select i').removeClass('on');
+        $('.ch_sBox, .dim').hide();
     });
+///////////////////// 수정 190808
 
     //채널링 tab
     $('.ch01').show();
@@ -37,8 +42,8 @@ $(function(){
             $('.ch_sBox ul li').css('display:none');
         });
         $(this).parent().css('display:block');
-        $('.loginArea > div').hide();
-        $('.ch0' + index).show();
+        $('.loginArea > div').addClass('hidden');
+        $('.ch0' + index).removeClass('hidden');
     });
 
     //확인 후 U-OTP 페이지로 이동 (layer st)

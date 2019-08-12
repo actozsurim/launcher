@@ -35,7 +35,7 @@ input:focus {
 
 
 //channel view
-.actozArea, .naverArea, .nexonArea, .kakaoArea, .dateArea, .cont1, .cont2 {
+.cont1, .cont2 {
     display: none;
     &.on {
         display: block;
@@ -89,6 +89,13 @@ input:focus {
             text-indent: -9999px;
             @include sprite($logo-login);
         }
+    }
+
+    // 190808 추가
+    // loading
+    .loading {        
+        text-align: center;
+        margin-top: 50% ;
     }
 
     // cont1, cont2 all
