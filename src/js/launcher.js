@@ -14,18 +14,11 @@ function modalCenter() {
         });
     }
 }
+
 // resizing할 요소들
 function resizing() {
-    //lnb 높이
-    $("#lnb, #content").css({
-        //height: $(window).height() - $(".top_bar").height()
-    });
-    //blocks 높이
-    /*$("#blocks").css({
-        height: $("#content").height()
-    });*/
-
 }
+
 // toast popup
 var toast;
 var toastLength;
@@ -63,7 +56,8 @@ function toastRemove() { //toast remove
         }
     }, 100);        
 };
-$(window).on("load", () => {
+
+$("document").ready(function(){
     //scrollbar, masonry
     $(".scroll-js-horizon").mCustomScrollbar({theme:"default", axis:"x"});
     $(".scroll-js").mCustomScrollbar({theme:"default", axis:"y"});
@@ -72,24 +66,20 @@ $(window).on("load", () => {
         columnWidth : 488,
         horizontalOrder: true
     });
-});
-$("document").ready(() => {
+
     // LNB 펼치기/접기
     var lnb = $("#lnb");
     var btnFold = $(".btn_fold");
     var sns = $(".sns_wrap");
-    sns.css({
-        width: $("#lnb").width()
-    });
-    btnFold.on("click", () => {
+    btnFold.on("click", function(){
         if (lnb.hasClass("fold")) { 
-            sns.animate({width: 265}, 200, "easeOutQuint");       
+            //sns.animate({width: 265}, 200, "easeOutQuint");       
             lnb.animate({width: 265}, 200, "easeOutQuint", function(){
                 lnb.removeClass("fold");
             });
             btnFold.removeClass("on");
         } else {
-            sns.animate({width: 130}, 200, "easeOutQuint");
+            //sns.animate({width: 130}, 200, "easeOutQuint");
             lnb.animate({width: 130}, 200, "easeOutQuint", function(){
             }).addClass("fold");
             btnFold.addClass("on");
@@ -100,7 +90,7 @@ $("document").ready(() => {
     var foldPc = $("#foldPc");
     var follWrap = foldPc.closest("#lnb .list.pc");
     var pcAccodian = $("#pcAccodian");
-    pcAccodian.on("click", () => {
+    pcAccodian.on("click", function(){
         if (follWrap.hasClass("fold")) {
             follWrap.removeClass("fold");
             foldPc.siblings().animate({height: foldPc.height(), martinTop: 4}, 200, "easeOutCubic");
@@ -111,23 +101,41 @@ $("document").ready(() => {
     });
 
     // toast close
-    $("#toast .close").on("click", (e) => {
+    $("#toast .close").on("click", function(e){
         //console.log(e.target)
         $(e.target).closest("li").hide();
     });
 
-    // modal
+    // modal 제어
     modalCenter();
+    $(".modalController").on("click", function(e){
+        var $this = $(e.target).closest(".modalController");
+        console.log($this, openTarget)
+        var openTarget = $this.attr("modal-target");
+        var closeTarget = $this.closest(".modal");
+        if ($this.attr("modal-control") == "open") {
+            modalCenter();
+            $(".dimmed").fadeIn();
+            $(openTarget).fadeIn();
+        } else if ($this.attr("modal-control") == "close") {
+            $(".dimmed").fadeOut();
+            $(closeTarget).fadeOut();
+        } else if ($this.attr("modal-control") == "call") {
+            $(closeTarget).fadeOut();
+            modalCenter();
+            $(openTarget).fadeIn();
+        }
+    });
 
     // resizing
-    resizing();
+    //resizing();
 
     //copyright
     var dateGet = new Date();
     $(".copyright .years").text(dateGet.getFullYear());
 
     //home
-    $(".home").on("click", (e) => {
+    $(".home").on("click", function(e){
         e.preventDefault();
         $("#blocks .mCSB_container").animate({
             top: 0
@@ -135,12 +143,36 @@ $("document").ready(() => {
         $("#blocks .mCSB_dragger").animate({
             top: 0
         }, 300, "easeOutCubic");
-    })
+    });
+    
+    //설정 탭
+    $('.tab li').on('click', function(){
+        index = $(this).index() + 1;
+        $('#set-type > div').each(function(){
+            $('.tab li').removeClass('on');
+        });
+        $(this).addClass('on');
+        $('#set-type > div').addClass('hidden');
+        $('.set' + index).removeClass('hidden');
+    });
+
+    //화면모드설정
+    var sel_txt = $('.select-box span, .select-box ul');
+    sel_txt.click(function(){
+        console.log(sel_txt);
+        $('i').toggleClass('on');
+        $('.select-box ul').toggle();
+    });
+    sel_txt.find('button').click(function(e){
+        var $this = $(e.target);
+        $this.parents('li').addClass('on');
+        $this.parents('li').siblings().removeClass('on');
+        $('.select-box span').text($this.text());
+    });
 });
 
 
-
-$(window).resize(() => {
+$(window).resize(function(){
     modalCenter();
-    resizing();
+    //resizing();
 });

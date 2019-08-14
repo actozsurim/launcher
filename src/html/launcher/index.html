@@ -13,15 +13,31 @@
         <script type="text/javascript" src="../../js/lib/masonry.pkgd.min.js"></script>
     </head>
     <body>
+        <!--작업 가이드. 실 작업시 삭제해주세요-->
+        <nav style="position: fixed; left: 0; bottom: 0; z-index: 30; background: salmon;">
+            <div onclick="$('.user').removeAttr('id')">일반 접속</div>
+            <div onclick="$('.user').attr('id', 'pcroom')">피씨방 접속</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-check">점검 팝업</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-notice">공지 팝업</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-notice-text">공지 팝업(텍스트만)</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-install">설치 팝업</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-lv35">레벨35 팝업</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-closed">종료확인 팝업</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-set">설정 팝업</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-loading">데이터 로딩중 팝업</div>
+            <div class="modalController" modal-control="open" modal-target="#modal-fail">데이터 로딩 실패 팝업</div>
+            <div class="" onclick="$('.modal').fadeOut();$('.dimmed').fadeOut();">[[모든 팝업 닫기]]</div>
+            <div class="" onclick="$('nav').fadeOut();">[[가이드 닫기]]</div>
+        </nav>
         <div id="launcher_wrap">
             <!--최상단-->
             <div class="top_bar">
                 <div class="left"><span>FINAL FANTASY XIV</span></div>
                 <ul class="right">
-                    <li class="setting"><span>설정</span></li>
+                    <li class="setting modalController" modal-control="open" modal-target="#modal-set"><span>설정</span></li>
                     <li class="minimum"><span>최소화</span></li>
                     <li class="maximum"><span>최대화</span></li>
-                    <li class="close"><span>닫기</span></li>
+                    <li class="close modalController" modal-control="open" modal-target="#modal-closed"><span>닫기</span></li>
                 </ul>
             </div>
             <!--//최상단-->
@@ -80,10 +96,10 @@
                             <div class="text common">
                                 <span class="left color1">정량제</span>
                                 <span class="right">123시간 5분</span>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </li>
-                    <li>
+                    <li class="active"><!--아이콘에 빨간 점 표시: 클래스 active-->
                         <a href="https://www.ff14.co.kr/shop" target="_blank">
                             <i class="icon icon-bulter"></i>
                             <div class="text common">
@@ -323,7 +339,7 @@
                             </div>
                             <div class="bar">
                                 <div class="gauge">
-                                    <div class="bg" id="start" style="width: 100%"></div>
+                                    <div class="bg" id="start" style="width: 100%" button-option="click"></div><!--게임설치/업데이트 상태일 때: button-option="click"-->
                                     <p>게임 시작</p>
                                 </div>
                             </div>
@@ -337,8 +353,8 @@
                             </div>
                             <div class="per">81%</div>
                             <div class="bar">
-                                <div class="gauge stop"><!--클래스 stop 추가-->
-                                    <div class="bg" id="updating" style="width: 81%"></div>
+                                <div class="gauge">
+                                    <div class="bg" id="updating" style="width: 81%" button-option="stop"></div><!--정지 상태일 때: button-option="stop"-->
                                     <p><i class="icon icon-ing"></i> 계속</p>
                                 </div>
                             </div>
@@ -353,7 +369,7 @@
                             <div class="per">81%</div>
                             <div class="bar">
                                 <div class="gauge">
-                                    <div class="bg" id="updating" style="width: 81%"></div>
+                                    <div class="bg" id="updating" style="width: 81%" button-option="ing"></div><!--설치/업데이트 진행중일 때: button-option="ing"-->
                                     <p><i class="icon icon-stop"></i> 업데이트 중지</p>
                                 </div>
                             </div>
@@ -367,7 +383,7 @@
                             </div>
                             <div class="bar">
                                 <div class="gauge">
-                                    <div class="bg" id="update" style="width: 100%"></div>
+                                    <div class="bg" id="update" style="width: 100%" button-option="click"></div><!--게임설치/업데이트 상태일 때: button-option="click"-->
                                     <p>업데이트</p>
                                 </div>
                             </div>
@@ -380,8 +396,8 @@
                             </div>
                             <div class="per">31%</div>
                             <div class="bar">
-                                <div class="gauge stop"><!--클래스 stop 추가-->
-                                    <div class="bg" id="installing" style="width: 31%"></div>
+                                <div class="gauge">
+                                    <div class="bg" id="installing" style="width: 31%" button-option="stop"></div><!--정지상태일때: button-option="stop"-->
                                     <p><i class="icon icon-ing"></i> 계속</p>
                                 </div>
                             </div>
@@ -395,7 +411,7 @@
                             <div class="per">31%</div>
                             <div class="bar">            
                                 <div class="gauge">
-                                    <div class="bg" id="installing" style="width: 31%"></div>
+                                    <div class="bg" id="installing" style="width: 31%" button-option="ing"></div><!--설치/업데이트 진행중일 때: button-option="ing"-->
                                     <p><i class="icon icon-stop"></i> 설치 중지</p>
                                 </div>   
                             </div>
@@ -406,9 +422,9 @@
                             <div class="volume">
                                 <p class="white line1">게임 클라이언트 설치가 필요합니다. </p>
                             </div>
-                            <div class="bar">
+                            <div class="bar modalController" modal-control="open" modal-target="#modal-install"><!--게임 설치 용량이 부족할 경우 팝업 노출-->
                                 <div class="gauge">
-                                    <div class="bg" id="install" style="width: 100%"></div>
+                                    <div class="bg" id="install" style="width: 100%" button-option="click"></div><!--게임설치/업데이트 상태일 때: button-option="click"-->
                                     <p>게임 설치</p>
                                 </div>
                             </div>
@@ -526,53 +542,9 @@
                 </ul>
                 <!--//토스트 팝업-->
 
-                <div class="dimmed" style="display: none;"></div>
-                <!--공지 팝업-->
-                <div id="modal-notice" class="modal" style="display: none;">
-                    <div class="modal-notice-wrap scroll-js mCustomScrollbar">
-                        <div class="img-wrap">
-                            <!--IMS에 동영상을 입력하면 동영상 노출-->
-                            <iframe width="600" height="337" src="https://www.youtube.com/embed/CMTa3jMS5Q0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-                            <!--IMS에 이미지를 입력하면 동영상 노출 ↓-->
-                            <!--<img src="../../img/launcher/sample_01.png" />-->
-                            <!-- IMS에서 링크를 입력했을 경우 a태그 노출. 링크를 입력하지 않으면 a태그 삭제 -->
-                            <a class="link" href="https://www.ff14.co.kr/main" target="_blank">링크</a>
-                        </div>
-                        <div class="text-wrap">
-                            <strong class="title">[파이널판타지14X매드라이프] 4주년 기념 특별방송 안내<br />                  [파이널판타지14X매드라이프] 4주년 기념 특별방송 안내</strong>
-                            <em class="sub-title">본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! </em>
-                            <div class="text">
-                                안녕하세요.<br /> 
-                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
-                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.<br /> <br /> 
-                                안녕하세요.<br /> 
-                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
-                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.<br /> <br /> 
-                                안녕하세요.<br /> 
-                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
-                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn-wrap">
-                        <!--팝업 닫을 때
-                        제일 마지막에 닫히는 팝업에 onclick이벤트 3개
-                        : 팝업닫기, dimmed 닫기, 토스트팝업 호출
-                        -->
-                        <button type="button" onclick='$(event.target).closest(".modal").fadeOut(); $(".dimmed").fadeOut(); setTimeout(toastOpen, 1000);'>확인</button>
-                        <label>
-                            <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
-                        </label>
-                    </div>
-                    <!--팝업 닫을 때
-                    제일 마지막에 닫히는 팝업에 onclick이벤트 3개
-                    : 팝업닫기, dimmed 닫기, 토스트팝업 호출
-                    -->
-                    <button type="button" class="close-pop" onclick='$(event.target).closest(".modal").fadeOut(); $(".dimmed").fadeOut(); setTimeout(toastOpen, 1000);'><i class="icon icon-pop-close"></i></button>
-                </div>
-                <!--//공지 팝업-->
+                <div class="dimmed"></div><!--팝업 띄울때 공통 dim처리-->
                 <!--점검 팝업-->
-                <div id="modal-check" class="modal" style="display: none;">
+                <div id="modal-check" class="modal">
                     <div class="text-wrap">
                         <div class="icon icon-exclamation"></div>
                         <strong class="title">
@@ -597,22 +569,94 @@
                         </div>
                     </div>
                     <div class="btn-wrap">
-                        <!--팝업 닫을 때
-                        첫 팝업에 onclick이벤트 3개
-                        : 팝업닫기, 다음에 뜰 팝업 호출, 파업 가운데정렬 함수 호출
+                        <!--
+                        ***** 팝업 제어 *****
+                        1. 클래스 modalController 추가
+                        2. 어트리뷰트 modal-control, modal-target 추가
+                            1)팝업 닫을 때: modal-control="close"
+                            닫기 요소를 포함하고 있는 팝업창이 닫힘
+                            ex) <div class="modalController" modal-control="close">
+
+                            2)팝업 열 때: modal-control="open" modal-target="열어야 할 팝업의 css selector"
+                            ex) <div class="modalController" modal-control="open" modal-target="#modal-check">점검 팝업 열기</div>
+
+                            3)현재 팝업 닫고 다른 팝업을 호출할 때: modal-control="call" modal-target="열어야 할 팝업의 css selector"
+                            ex) <div class="modalController" modal-control="call" modal-target="#modal-notice">현재 팝업 닫고 공지팝업 열기</div>
+                        3. onclick 이벤트로 작성하여도 무관함. 
+                            ex) <div onclick='$("#modal-oooo").fadeOut(); $(".dimmed").fadeOut();'></div>
                         -->
-                        <button type="button" onclick='$(event.target).closest(".modal").fadeOut(); $("#modal-notice").fadeIn(); modalCenter();'>확인</button>
+                        <button type="button" class="modalController" modal-control="call" modal-target="#modal-notice"><i class="icon icon-pop-close">확인</i></button>
                         <label>
                             <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
                         </label>
                     </div>
-                    <!--팝업 닫을 때
-                    첫 팝업에 onclick이벤트 3개
-                    : 팝업닫기, 다음에 뜰 팝업 호출, 파업 가운데정렬 함수 호출
-                    -->
-                    <button type="button" class="close-pop" onclick='$(event.target).closest(".modal").fadeOut(); $("#modal-notice").fadeIn(); modalCenter();'><i class="icon icon-pop-close"></i></button>
+                    <button type="button" class="close-pop modalController" modal-control="call" modal-target="#modal-notice"><i class="icon icon-pop-close"></i></button>
                 </div>
                 <!--//점검 팝업-->
+                <!--공지 팝업: 이미지 or 동영상이 있는 경우-->
+                <div id="modal-notice" class="modal" style="display: none;">
+                    <div class="modal-notice-wrap scroll-js mCustomScrollbar">
+                        <div class="img-wrap">
+                            <!--IMS에 동영상을 입력하면 동영상 노출-->
+                            <iframe width="600" height="337" src="https://www.youtube.com/embed/CMTa3jMS5Q0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                            <!--IMS에 이미지를 입력하면 이미지 노출 ↓-->
+                            <!--<img src="../../img/launcher/sample_01.png" />-->
+                        </div>
+                        <div class="text-wrap">
+                            <a href="https://www.ff14.co.kr/main" target="_blank" class="link">자세히 보기</a><!-- IMS에서 링크를 입력했을 경우 <a class="link"> 노출. 링크를 입력하지 않으면 삭제 -->
+                            <strong class="title">[파이널판타지14X매드라이프] 4주년 기념 특별방송 안내<br />                  [파이널판타지14X매드라이프] 4주년 기념 특별방송 안내</strong>
+                            <em class="sub-title">본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! </em>
+                            <div class="text">
+                                안녕하세요.<br /> 
+                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
+                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.<br /> <br /> 
+                                안녕하세요.<br /> 
+                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
+                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.<br /> <br /> 
+                                안녕하세요.<br /> 
+                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
+                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-wrap"> 
+                        <button type="button" class="modalController" modal-control="close" onclick='setTimeout(toastOpen, 1000);'>확인</button><!--팝업 닫고 토스트팝업 호출-->
+                        <label>
+                            <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
+                        </label>
+                    </div>
+                    <button type="button" class="close-pop modalController" modal-control="close" onclick='setTimeout(toastOpen, 1000);'><i class="icon icon-pop-close"></i></button><!--팝업 닫고 토스트팝업 호출-->
+                </div>
+                <!--//공지 팝업: 이미지 or 동영상이 있는 경우-->
+                <!--공지 팝업: 이미지 or 동영상이 없는 경우-->
+                <div id="modal-notice-text" class="modal" style="display: none;">
+                    <div class="modal-notice-wrap scroll-js mCustomScrollbar">
+                        <div class="text-wrap">
+                            <a href="https://www.ff14.co.kr/main" target="_blank" class="link">자세히 보기</a><!-- IMS에서 링크를 입력했을 경우 <a class="link"> 노출. 링크를 입력하지 않으면 삭제 -->
+                            <strong class="title">[파이널판타지14X매드라이프] 4주년 기념 특별방송 안내<br />                  [파이널판타지14X매드라이프] 4주년 기념 특별방송 안내</strong>
+                            <em class="sub-title">본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! </em>
+                            <div class="text">
+                                안녕하세요.<br /> 
+                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
+                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.<br /> <br /> 
+                                안녕하세요.<br /> 
+                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
+                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.<br /> <br /> 
+                                안녕하세요.<br /> 
+                                최고의 모험을 선물하는 파이널판타지14 입니다.<br />                               
+                                오는 8월 6일(화)에 크리스탈샵 관련 신규 상품 추가를 위한 점검이 진행될 예정입니다.<br />   자세한 내용은 다음 사항을 참고해 주시길 바랍니다.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-wrap">
+                        <button type="button" class="modalController" modal-control="close">확인</button>
+                        <label>
+                            <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
+                        </label>
+                    </div>
+                    <button type="button" class="close-pop modalController" modal-control="close" onclick='setTimeout(toastOpen, 1000);'><i class="icon icon-pop-close"></i></button>
+                </div>
+                <!--//공지 팝업: 이미지 or 동영상이 없는 경우-->
                 <!--설치 팝업-->
                 <div id="modal-install" class="modal" style="display: none;">
                     <div class="text-wrap">
@@ -629,12 +673,12 @@
                         </div>
                     </div>
                     <div class="btn-wrap">
-                        <button type="button">확인</button>
+                        <button type="button" class="modalController" modal-control="close">확인</button>
                         <label>
                             <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
                         </label>
                     </div>
-                    <button type="button" class="close-pop"><i class="icon icon-pop-close"></i></button>
+                    <button type="button" class="close-pop modalController" modal-control="close"><i class="icon icon-pop-close"></i></button>
                 </div>
                 <!--//설치 팝업-->
                 <!--레벨35 팝업-->
@@ -671,9 +715,229 @@
                             </ul>
                         </div>
                     </div>
-                    <button type="button" class="close-pop"><i class="icon icon-pop-close"></i></button>
+                    <button type="button" class="close-pop modalController" modal-control="close"><i class="icon icon-pop-close"></i></button>
                 </div>
                 <!--//레벨35 팝업-->
+                <!-- 종료확인 팝업 -->
+                <div id="modal-closed" class="modal" style="display: none;">
+                    <div class="text-wrap">
+                        <div class="icon icon-question"></div>
+                        <p>런처를 종료하시겠습니까?</p>
+                    </div>
+                    <div class="btn-wrap">
+                        <button type="button">확인</button>
+                        <button type="button" class="modalController" modal-control="close">취소</button>
+                    </div>
+                </div>
+                <!-- //종료확인 팝업 -->
+                <!-- 데이터 로딩중 팝업 -->
+                <div id="modal-loading" class="modal" style="display: none;">
+                    <div class="text-wrap">
+                        <i class="icon-loading"></i>
+                        <span>데이터 로딩중...</span>
+                    </div>
+                </div>
+                <!-- //데이터 로딩중 팝업 -->
+                <!-- 데이터 로딩 실패 팝업 -->
+                <div id="modal-fail" class="modal" style="display: none;">
+                    <div class="text-wrap">
+                        <p>일부 데이터를 불러오지 못했습니다.</p>
+                    </div>
+                    <div class="btn-wrap">
+                        <button type="button">
+                            <i class="icon btn-refresh"></i>
+                            <span>새로고침</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- //데이터 로딩 실패 팝업 -->
+                <!-- 설정 팝업 -->
+                <div id="modal-set" class="modal" style="display: none;">
+                    <div class="top-wrap"><div class="icon icon-setting"></div>설정</div>
+                    <div class="view-wrap">
+                        <div class="tab-box">
+                            <ul class="tab">
+                                <li class="on"><button type="button">일반</button></li>
+                                <li><button type="button">게임</button></li>
+                                <li><button type="button">정보</button></li>
+                            </ul>
+                        </div>
+                        <div id="set-type">
+                            <!-- 일반 -->
+                            <div class="set1">
+                                <div class="text-wrap">
+                                    <strong class="title">화면 모드 설정</strong>
+                                    <!--
+                                    <div class="select-box">
+                                        <select>
+                                            <option selected>창모드(기본)</option>
+                                            <option>전체화면</option>
+                                        </select>
+                                    </div>
+                                    -->
+                                    <div class="select-box">
+                                        <span>창모드</span>
+                                        <ul>
+                                            <li class="on"><button type="button">창모드(기본)</button></li>
+                                            <li><button type="button">전체화면</button></li>
+                                        </ul>
+                                        <i></i>
+                                    </div>
+                                    <strong class="title">사용자 설정 백업</strong>
+                                    <p>단축바, HUB 배열, 캐릭터 설정 등의 사용자 설정 정보를 백업 및 복원합니다.</p>
+                                    <p>백업 및 복원은 즉시 적용됩니다.</p>
+                                    <ul class="btn-box">
+                                        <li>
+                                            <div class="btn"><button class="button">클라우드로부터 복원</button></div>
+                                            <div class="text">
+                                                <p>
+                                                    클라우드에 마지막으로 저장된 설정으로 복원합니다.<br>
+                                                    데이터가 있을 경우, 버튼 클릭 시 <span class="txt-blue">즉시 복원</span> 됩니다.<br>
+                                                    (클라우드 백업 기능 제공은 종료되었으며 복원 기능 또한 한시적으로 제공됩니다.)
+                                                </p>
+                                                <p class="last-set">
+                                                    마지막 백업 일시 : 2017년 07월 25일 15시 35분<br>
+                                                    마지막 백업 일시 : 없음
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="btn"><button class="button">파일을 선택하여 복원</button></div>
+                                            <div class="text">
+                                                <input type="radio" id="btn_set"><label for="btn_set" name="btn_set">이전 사용자 설정을 덮어쓰지 않습니다.</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="btn"><button type="button">사용자 설정 백업</button></div>
+                                            <div class="text"><p>현재 설정을 백업 파일로 저장합니다.</p></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- //일반 -->
+                            <!-- 게임 -->
+                            <div class="set2 hidden">
+                                <div class="text-wrap">
+                                    <div class="text">
+                                        <strong class="title">게임 설치 경로</strong>
+                                        <div class="border scroll-js-horizon mCustomScrollbar">
+                                            <div class="border-wrap">C:\Program Files (x86)\FINAL FANTASY XIV - KOREA\FINAL FANTASY XIV - KOREA\FINAL FANTASY XIV - KOREA</div>
+                                        </div>
+                                    </div>
+                                    <ul class="btn-box">
+                                        <li>
+                                            <strong class="title">게임 업데이트</strong>
+                                            <div class="check_setting">
+                                                <label class="radio_dx" for="setting_update">
+                                                    <input type="checkbox" value="true" name="setting_update" id="setting_update" checked>
+                                                    <i class="icon btn-setting"></i>
+                                                    <span>런처 실행 시 게임을 자동 업데이트 합니다.</span>
+                                                </label>
+                                            </div>
+                                            <!--
+                                            <div>
+                                                <button class="btn-setting on"></button>
+                                                <p>런처 실행 시 게임을 자동 업데이트 합니다.</p>
+                                            </div>
+                                            -->
+                                        </li>
+                                        <li>
+                                            <strong class="title">Direct X 11 사용 설정</strong>
+                                            <p>Direct 11 모드를 지원하지 않는 PC이거나, 성능을 향상시키려면 체크 옵션을 해제해주세요.</p>
+                                            <div class="check_setting">
+                                                <label class="radio_dx" for="setting_dx11">
+                                                    <input type="checkbox" value="true" name="setting_dx11" id="setting_dx11" checked>
+                                                    <i class="icon btn-setting"></i>
+                                                    <span>런처 실행 시 게임을 자동 업데이트 합니다.</span>
+                                                </label>
+                                            </div>
+                                            <!--
+                                            <div>
+                                                <button class="btn-setting on"></button>
+                                                <p>더 아름다운 그래픽으로 파이널판타지 14를 즐길 수 있는 Direct X 11 모드를 사용합니다.</p>
+                                            </div>
+                                            -->
+                                        </li>
+                                        <li>
+                                            <strong class="title">시스템 설정 초기화</strong>
+                                            <div class="btn-refresh">
+                                                <button type="button">초기화</button>
+                                                <p>
+                                                    게임 클라이언트의 시스템 설정을 초기화 합니다.<br>
+                                                    화면/소리/그래픽/마우스/게임패드 설정 등이 <span class="txt-blue">즉시</span> 초기화됩니다.
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- //게임 -->
+                            <!-- 정보 -->
+                            <div class="set3 hidden">
+                                <div class="text-wrap">
+                                    <div>
+                                        <strong class="title">파이널판타지14 런처 <span>V0.053</span> 버전</strong>
+                                        <p class="txt-blue">v 1.3.4.114</p>
+                                    </div>
+                                    <div>
+                                        <strong class="title">게임 정보 및 이용 등급 안내</strong>
+                                        <ul class="table">
+                                            <li>
+                                                <em>게임명</em>
+                                                <span>FINAL FANTASY XIV (파이널판타지14)</span>
+                                            </li>
+                                            <li>
+                                                <em>원제명</em>
+                                                <span>FINAL FANTASY XIV</span>
+                                            </li>
+                                            <li>
+                                                <em>개발사</em>
+                                                <span>SQUARE ENIX</span>
+                                            </li>
+                                            <li>
+                                                <em>배급사</em>
+                                                <span>(주) 액토즈소프트</span>
+                                            </li>
+                                            <li>
+                                                <em>등급</em>
+                                                <span>15세 이용가</span>
+                                            </li>
+                                            <li>
+                                                <em>등급분류번호</em>
+                                                <span>GC-CC-NP-180615-009</span>
+                                            </li>
+                                            <li>
+                                                <em>등급분류일자</em>
+                                                <span>2018-06-15</span>
+                                            </li>
+                                            <li>
+                                                <em>신고(등록)번호</em>
+                                                <span>제 2015-57호</span>
+                                            </li>
+                                            <li>
+                                                <em>장르</em>
+                                                <span>롤플레잉</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //정보 -->
+                        </div>
+                    </div>
+                    <div class="btn-wrap">
+                        <div class="btn-wrap-left">
+                            <button type="button" class="default-set">설정 초기화</button>
+                        </div>
+                        <div class="btn-wrap-right">
+                            <button type="button">확인</button>
+                            <button type="button">취소</button>
+                            <button type="button">적용</button>
+                        </div>
+                    </div>
+                    <button type="button" class="close-pop modalController" modal-control="close"><i class="icon icon-pop-close"></i></button>
+                </div>
+                <!-- //설정 팝업 -->
             </div>
         </div>
         <script type="text/javascript">
