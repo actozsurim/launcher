@@ -3,7 +3,7 @@ function modalCenter() {
     var modal = $(".modal");
     var w_width = $(window).width();
     var w_height = $(window).height();
-    console.log(w_width, w_height)
+    //console.log(w_width, w_height)
     for(var i=0; i<modal.length; i++) {
         var m_width = modal.eq(i).width();
         var m_height = modal.eq(i).height();
@@ -56,6 +56,18 @@ function toastRemove() { //toast remove
         }
     }, 100);        
 };
+function callToast(){
+    setTimeout(toastOpen, 1000);
+}
+
+// 팝업 내 동영상 멈추기
+function stopVideo(_modal) {
+    //var div = e.target.closest(".modal");
+    console.log(_modal)
+    var div = _modal;
+    var iframee = div.getElementsByTagName("iframe")[0].contentWindow;
+    iframee.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+}
 
 $("document").ready(function(){
     //scrollbar, masonry
@@ -125,10 +137,11 @@ $("document").ready(function(){
             modalCenter();
             $(openTarget).fadeIn();
         }
+        var _modal = e.target.closest(".modal");
+        if ($(_modal).find("iframe").length > 0) {
+            stopVideo(_modal);
+        }
     });
-
-    // resizing
-    //resizing();
 
     //copyright
     var dateGet = new Date();
@@ -169,6 +182,9 @@ $("document").ready(function(){
         $this.parents('li').siblings().removeClass('on');
         $('.select-box span').text($this.text());
     });
+
+    // resizing
+    //resizing();
 });
 
 

@@ -8,7 +8,6 @@
         <script type="text/javascript" src="../../js/lib/jquery-1.11.1.js"></script>
         <script type="text/javascript" src="../../js/lib/jquery.easing.min.js"></script>
         <script type="text/javascript" src="../../js/launcher.js"></script>
-        <script type="text/javascript" src="../../js/lib/loginCheck.js"></script>
         <script type="text/javascript" src="../../js/lib/jquery.mCustomScrollbar.concat.min.js"></script>
         <script type="text/javascript" src="../../js/lib/masonry.pkgd.min.js"></script>
     </head>
@@ -24,8 +23,9 @@
             <div class="modalController" modal-control="open" modal-target="#modal-lv35">레벨35 팝업</div>
             <div class="modalController" modal-control="open" modal-target="#modal-closed">종료확인 팝업</div>
             <div class="modalController" modal-control="open" modal-target="#modal-set">설정 팝업</div>
-            <div class="modalController" modal-control="open" modal-target="#modal-loading">데이터 로딩중 팝업</div>
-            <div class="modalController" modal-control="open" modal-target="#modal-fail">데이터 로딩 실패 팝업</div>
+            <div class="modalController" onclick="$('#blocks').fadeOut();$('#content-loading').fadeIn();$('#content-fail').fadeOut();">데이터 로딩중</div>
+            <div class="modalController" onclick="$('#blocks').fadeOut();$('#content-loading').fadeOut();$('#content-fail').fadeIn();">데이터 로딩 실패</div>
+            <div class="modalController" onclick="$('#blocks').fadeIn();$('#content-loading').fadeOut();$('#content-fail').fadeOut();">컨텐츠 블록 보기</div>
             <div class="" onclick="$('.modal').fadeOut();$('.dimmed').fadeOut();">[[모든 팝업 닫기]]</div>
             <div class="" onclick="$('nav').fadeOut();">[[가이드 닫기]]</div>
         </nav>
@@ -53,7 +53,7 @@
                         <span class="icon icon-pc pc">PC방</span>
                     </div>
                     <div class="info wide">
-                        <span class="name">닉네임은열두자리까지이다</span>&nbsp;님, <br />환영합니다
+                        <span class="name">123456789012</span>&nbsp;님, <br />환영합니다.
                     </div>
                     <div class="logout">로그아웃<i class="icon icon-logout"></i></div>
                 </div>
@@ -136,7 +136,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="ddddd" target="_blank">
+                        <a href="https://www.ff14.co.kr/shop/buy/Cart" target="_blank">
                             <i class="icon icon-cart"></i>
                             <div class="text common">
                                 <span class="left">장바구니</span>
@@ -435,7 +435,17 @@
                 </div>
                 <!--//상단 프로그레스 바 영역-->
                 <!--컨텐츠 블록-->
+                <div class="test"></div>
                 <div id="blocks" class="scroll-js mCustomScrollbar">
+                    <!--
+                    윈도우 로드 이후에 <div id="blocks">를 삽입할 경우 하기의 스크립트를 실행시켜 주어야 함.
+                        $(".scroll-js").mCustomScrollbar({theme:"default", axis:"y"});
+                        $("#content-blocks").masonry({
+                            itemSelector : ".block", 
+                            columnWidth : 488,
+                            horizontalOrder: true
+                        });
+                    -->
                     <h1 id="logo"><img src="../../img/launcher/logo.png" alt="파이널판타지14(FINAL FANTASY XIV)" /></h1>
                     <!--블록형 리스트-->
                     <ul id="content-blocks">
@@ -513,7 +523,39 @@
                     <p class="copyright">&copy;2010 - <span class="years"></span>&nbsp;SQUARE ENIX CO., LTD. All Rights Reserved. Published in Korea by ACTOZ SOFT CO., LTD.</p>
                 </div>
                 <!--//컨텐츠 블록-->
-
+                <!-- 데이터 로딩중 -->
+                <div id="content-loading" class="load" style="display: none;">
+                    <div class="wrap1">
+                        <div class="wrap2">                            
+                            <div class="wrap">
+                                <div class="text-wrap">
+                                    <i class="icon-loading"></i>
+                                    <span>데이터 로딩중...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //데이터 로딩중 -->
+                <!-- 데이터 로딩 실패 -->
+                <div id="content-fail" class="load" style="display: none;">
+                    <div class="wrap1">
+                        <div class="wrap2">                            
+                            <div class="wrap">
+                                <div class="text-wrap">
+                                    <p>일부 데이터를 불러오지 못했습니다.</p>
+                                </div>
+                                <div class="btn-wrap">
+                                    <button type="button">
+                                        <i class="icon btn-refresh"></i>
+                                        <span>새로고침</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //데이터 로딩 실패 -->
                 <!--토스트 팝업-->
                 <!--정렬순서: 늦은날짜→이른날짜 순으로 내림차순-->
                 <ul id="toast">
@@ -542,9 +584,9 @@
                 </ul>
                 <!--//토스트 팝업-->
 
-                <div class="dimmed"></div><!--팝업 띄울때 공통 dim처리-->
+                <div class="dimmed" style="display: none;"></div><!--팝업 띄울때 공통 dim처리-->
                 <!--점검 팝업-->
-                <div id="modal-check" class="modal">
+                <div id="modal-check" class="modal" style="display: none;">
                     <div class="text-wrap">
                         <div class="icon icon-exclamation"></div>
                         <strong class="title">
@@ -598,7 +640,7 @@
                     <div class="modal-notice-wrap scroll-js mCustomScrollbar">
                         <div class="img-wrap">
                             <!--IMS에 동영상을 입력하면 동영상 노출-->
-                            <iframe width="600" height="337" src="https://www.youtube.com/embed/CMTa3jMS5Q0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                            <iframe width="600" height="337" src="https://www.youtube.com/embed/CMTa3jMS5Q0?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe> 
                             <!--IMS에 이미지를 입력하면 이미지 노출 ↓-->
                             <!--<img src="../../img/launcher/sample_01.png" />-->
                         </div>
@@ -620,12 +662,12 @@
                         </div>
                     </div>
                     <div class="btn-wrap"> 
-                        <button type="button" class="modalController" modal-control="close" onclick='setTimeout(toastOpen, 1000);'>확인</button><!--팝업 닫고 토스트팝업 호출-->
+                        <button type="button" class="modalController" modal-control="close" onclick='callToast();'>확인</button><!--팝업 닫고 토스트팝업 호출-->
                         <label>
                             <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
                         </label>
                     </div>
-                    <button type="button" class="close-pop modalController" modal-control="close" onclick='setTimeout(toastOpen, 1000);'><i class="icon icon-pop-close"></i></button><!--팝업 닫고 토스트팝업 호출-->
+                    <button type="button" class="close-pop modalController" modal-control="close" onclick='callToast();'><i class="icon icon-pop-close"></i></button><!--팝업 닫고 토스트팝업 호출-->
                 </div>
                 <!--//공지 팝업: 이미지 or 동영상이 있는 경우-->
                 <!--공지 팝업: 이미지 or 동영상이 없는 경우-->
@@ -654,7 +696,7 @@
                             <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
                         </label>
                     </div>
-                    <button type="button" class="close-pop modalController" modal-control="close" onclick='setTimeout(toastOpen, 1000);'><i class="icon icon-pop-close"></i></button>
+                    <button type="button" class="close-pop modalController" modal-control="close" onclick='callToast();'><i class="icon icon-pop-close"></i></button>
                 </div>
                 <!--//공지 팝업: 이미지 or 동영상이 없는 경우-->
                 <!--설치 팝업-->
@@ -696,7 +738,7 @@
                                     <div class="middle">
                                         <div>
                                             <p>파이널판타지14를 35레벨까지 <br />무료로 이용할 수 있는 혜택입니다.</p>
-                                            <button type="button" class="confiirm">혜택 확인하기</button>
+                                            <a href="http://www.ff14.co.kr/events/pub/free" target="_blank" class="confirm">혜택 확인하기</a>
                                         </div>
                                     </div>
                                     <button type="button" class="blue-bg">35레벨 무료 혜택 게임 실행</button>
@@ -707,7 +749,7 @@
                                         <div>
                                             <p>웹젠 가맹 PC방에서 파이널판타지14를 <br />이용하시면 추가 혜택이 적용됩니다.</p>
                                             <p class="orange">가맹 PC방 접속 혹은 유료 결제 시, <br />35레벨 무료 혜택 기능은 해제됩니다.</p>
-                                            <button type="button" class="confiirm">혜택 확인하기</button>
+                                            <a href="http://www.ff14.co.kr/events/2017/pcroom" target="_blank" class="confirm">혜택 확인하기</a>
                                         </div>
                                     </div>
                                     <button type="button" class="orange-bg">가맹 PC방 혜택 게임 실행</button>
@@ -730,27 +772,6 @@
                     </div>
                 </div>
                 <!-- //종료확인 팝업 -->
-                <!-- 데이터 로딩중 팝업 -->
-                <div id="modal-loading" class="modal" style="display: none;">
-                    <div class="text-wrap">
-                        <i class="icon-loading"></i>
-                        <span>데이터 로딩중...</span>
-                    </div>
-                </div>
-                <!-- //데이터 로딩중 팝업 -->
-                <!-- 데이터 로딩 실패 팝업 -->
-                <div id="modal-fail" class="modal" style="display: none;">
-                    <div class="text-wrap">
-                        <p>일부 데이터를 불러오지 못했습니다.</p>
-                    </div>
-                    <div class="btn-wrap">
-                        <button type="button">
-                            <i class="icon btn-refresh"></i>
-                            <span>새로고침</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- //데이터 로딩 실패 팝업 -->
                 <!-- 설정 팝업 -->
                 <div id="modal-set" class="modal" style="display: none;">
                     <div class="top-wrap"><div class="icon icon-setting"></div>설정</div>
@@ -804,7 +825,7 @@
                                         <li>
                                             <div class="btn"><button class="button">파일을 선택하여 복원</button></div>
                                             <div class="text">
-                                                <input type="radio" id="btn_set"><label for="btn_set" name="btn_set">이전 사용자 설정을 덮어쓰지 않습니다.</label>
+                                                <input type="checkbox" id="btn_set"><label for="btn_set" name="btn_set">이전 사용자 설정을 덮어쓰지 않습니다.</label>
                                             </div>
                                         </li>
                                         <li>
@@ -831,7 +852,8 @@
                                                 <label class="radio_dx" for="setting_update">
                                                     <input type="checkbox" value="true" name="setting_update" id="setting_update" checked>
                                                     <i class="icon btn-setting"></i>
-                                                    <span>런처 실행 시 게임을 자동 업데이트 합니다.</span>
+                                                    <span class="on">런처 실행 시 게임을 자동 업데이트 합니다.</span>
+                                                    <span class="off">수동으로 업데이트 합니다.</span>
                                                 </label>
                                             </div>
                                             <!--
@@ -848,7 +870,7 @@
                                                 <label class="radio_dx" for="setting_dx11">
                                                     <input type="checkbox" value="true" name="setting_dx11" id="setting_dx11" checked>
                                                     <i class="icon btn-setting"></i>
-                                                    <span>런처 실행 시 게임을 자동 업데이트 합니다.</span>
+                                                    <span>더 아름다운 그래픽으로 파이널판타지14를 즐길 수 있는 Direct X 11 모드를 사용합니다.</span>
                                                 </label>
                                             </div>
                                             <!--
@@ -876,7 +898,7 @@
                             <div class="set3 hidden">
                                 <div class="text-wrap">
                                     <div>
-                                        <strong class="title">파이널판타지14 런처 <span>V0.053</span> 버전</strong>
+                                        <strong class="title">파이널판타지14 런처</strong>
                                         <p class="txt-blue">v 1.3.4.114</p>
                                     </div>
                                     <div>
@@ -904,11 +926,11 @@
                                             </li>
                                             <li>
                                                 <em>등급분류번호</em>
-                                                <span>GC-CC-NP-180615-009</span>
+                                                <span>GC-CC-NP-190726-017</span>
                                             </li>
                                             <li>
                                                 <em>등급분류일자</em>
-                                                <span>2018-06-15</span>
+                                                <span>2019-07-26</span>
                                             </li>
                                             <li>
                                                 <em>신고(등록)번호</em>

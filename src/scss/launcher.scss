@@ -245,7 +245,7 @@ html, body {
             }
             .photo {
                 position: relative;
-                width: 91px;
+                width: 104px;
                 height: 100px;
                 top: 3px;
                 //background: pink;
@@ -369,6 +369,7 @@ html, body {
                         &.left {
                             padding: 0 7px 0 0;
                             color: #707070;
+                            //font-weight: bold;
                         }
                         &.color1 {
                             color: #958bf6;
@@ -418,19 +419,21 @@ html, body {
                 background: #333;
                 &.fold {
                     li {
+                        padding: 0;
                         &:not(#foldPc) {
                             overflow: hidden;
                         }
                         #pcAccodian {
                             position: absolute;
-                            right: 3px;
-                            top: -1px;
+                            right: 0;
+                            top: 0;
                             display: block;
                             @include sprite($icon-plus);
                         }
                     }
                 }
                 li {
+                    padding: 4px 0 0;
                     $icons: 4;                    
                     @for $icon from 1 through $icons {
                         &:nth-child(#{$icon}) {
@@ -439,10 +442,13 @@ html, body {
                             }
                         }                        
                     }
+                    &#foldPc {
+                        padding: 0;
+                    }
                     i.icon-plus {
                         display: block;
                         float: right;
-                        margin: 3px 0 0;
+                        margin: 3px 12px 0 0;
                         @include sprite($icon-minus);
                     }
                 }
@@ -466,6 +472,10 @@ html, body {
                                 }
                             }                        
                         }
+                    }
+                    .text {                        
+                        color: #707070;
+                        //font-weight: bold;
                     }
                 }
             }
@@ -537,7 +547,7 @@ html, body {
         height: 100%;*/
         //height: calc(100% - 35px);
         .progress_wrap {
-            padding: 60px 80px 25px 30px;
+            padding: 60px 80px 25px 50px;
             background: rgba(0,0,0,0.5);
             overflow: hidden;
             border-bottom: 1px solid #333;
@@ -570,7 +580,7 @@ html, body {
                     text-align: right;
                     > div {
                         display: inline-block;
-                        margin: 0 0 0 20px;
+                        margin: 0 0 0 14px;
                     }
                     .volume {                            
                         height: 50px;
@@ -578,7 +588,7 @@ html, body {
                         padding: 5px 0;
                         box-sizing: border-box;
                         p {
-                            font-size: 14px;
+                            font-size: 12px;
                             line-height: 20px;
                             &.white {
                                 color: #fff;
@@ -592,7 +602,7 @@ html, body {
                         }
                     }
                     .per {
-                        font-size: 38px;
+                        font-size: 35px;
                         font-weight: bold;
                         color: #fff;
                         line-height: 40px;
@@ -761,7 +771,7 @@ html, body {
         #blocks {
             height: 100%;
             height: calc(100% - 136px) !important;
-            padding: 0 0 0 30px;
+            padding: 0 0 0 50px;
             overflow: hidden;
             #logo {
                 text-align: right;
@@ -842,6 +852,67 @@ html, body {
                 span {
                     font-size: 12px;    
                     vertical-align: baseline;                
+                }
+            }
+        }
+        .load {
+            height: calc(100% - 136px) !important;
+            padding: 0 0 0 30px;
+            overflow: hidden;
+            .wrap1 {
+                display: table;
+                width: 100%;
+                height: 100%;
+                .wrap2 {
+                    display: table-cell;
+                    text-align: center;
+                    vertical-align: middle;
+                    .wrap {
+                        display: inline-block;
+                        padding: 25px 40px;
+                        background: rgba(0,0,0,0.7);
+                        text-align: center;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        .text-wrap {
+                            padding: 0 0 12px;
+                            .icon-loading {
+                                display: inline-block;
+                                width: 31px;
+                                height: 31px;
+                                margin: 0 15px 0 0;
+                                border-radius: 50%;
+                                background: url(../img/launcher/loading_01.gif) no-repeat 0 0;
+                            }
+                            span {
+                                display: inline-block;
+                                color: #fff;
+                            }
+                            p {
+                                color: #fff;
+                            }
+                        }
+                        .btn-wrap {
+                            padding: 0;
+                            background: none;
+                            button {
+                                color: #fff;
+                                background: #486ab4;
+                                border-radius: 5px;
+                                padding: 10px 20px 12px;
+                                &:hover {
+                                    background: #5177c7;
+                                }
+                                .btn-refresh {
+                                    @include sprite($btn-rfrsh);
+                                    margin: 0 5px 0 0;
+                                }
+                                span {
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1024,20 +1095,21 @@ html, body {
                         color: #fff;
                         background: #535353;
                         border-radius: 5px;
-                        padding: 10px 30px;
+                        padding: 8px 17px 7px 17px;
                         margin: 0 0 20px;
+                        font-size: 13px;
                         &:hover {
                             background: #626262;
                         }
                     }
                 }
-                .img-wrap + .text-wrap {
+                /*.img-wrap + .text-wrap {
                     .link {
                         position: absolute;
                         left: 30px;
-                        top: -55px;
+                        top: -45px;
                     }
-                }
+                }*/
                 .mCSB_inside > .mCSB_container {
                     margin-right: 0px;
                 }
@@ -1202,7 +1274,8 @@ html, body {
                                             margin: 20px 0 0;
                                         }
                                     }
-                                    button {
+                                    .confirm {
+                                        display: inline-block;
                                         padding: 8px 15px;
                                         margin: 12px 0 0;
                                         border-radius: 5px;
@@ -1382,12 +1455,15 @@ html, body {
                                         color: #fff;
                                         border: 1px solid #535353;
                                         background: transparent;
+                                        &:hover {
+                                            background: #535353;
+                                        }
                                     }
                                 }
                                 .text{
                                     padding: 10px 0;
                                     font-size:13px;
-                                    input[type="radio"] {
+                                    input[type="checkbox"] {
                                         display: none;
                                         margin-right: 7px;
                                         -webkit-appearance: none;
@@ -1404,7 +1480,7 @@ html, body {
                                             @include sprite($bg-overwrite-off);
                                         }
                                     }
-                                    input[type="radio"]:checked + label:before{
+                                    input[type="checkbox"]:checked + label:before{
                                         @include sprite($bg-overwrite-on);
                                     }
                                     .last-set {
@@ -1428,7 +1504,7 @@ html, body {
                             margin: 12px 0;
                             white-space: nowrap;
                             overflow: visible;
-                            width: 400px;
+                            width: 570px;
                             border: 1px solid #6d6d6d;
                             background: #000;
                             .border-wrap {
@@ -1471,13 +1547,26 @@ html, body {
                                                 display: inline-block;
                                                 @include sprite($btn-setting-off);
                                             }
+                                            & + i + .on {
+                                                display: none;
+                                            }
+                                            & + i + .on + .off {
+                                                display: inline-block;
+                                            }
                                             &:checked + i {
                                                 @include sprite($btn-setting-on);
+                                            }
+                                            &:checked + i + .on {
+                                                display: inline-block;
+                                            }
+                                            &:checked + i + .on + .off {
+                                                display: none;
                                             }
                                         }
                                         span {
                                             display: inline-block;
                                             margin: 0 0 0 6px;
+                                            font-size: 13px;
                                         }
                                     }
                                 }
@@ -1540,7 +1629,7 @@ html, body {
                     display: flex;
                     .default-set {
                         background: transparent;
-                        padding: 5px 0;
+                        padding: 5px 15px;
                         margin: 5px 0;
                         color:#4b66ba;
                         opacity: 0.8;
