@@ -92,7 +92,7 @@ gulp.task('sprite', function(){
         imgName: 'sprite.png',
         padding: 10,	// 이미지 사이의 패딩
         cssName: 'sprite.scss',
-		imgPath: '/img-sprite/sprite.png'
+		imgPath: '../img-sprite/sprite.png'
 		//algorithm: 'left-right'	//가로로
     }));
     var imgStream = spriteData.img.pipe(gulp.dest(dist + '/img-sprite/')).on('error', function (err) {
