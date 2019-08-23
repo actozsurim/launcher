@@ -69,6 +69,18 @@ function stopVideo(_modal) {
     iframee.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
 }
 
+// window load 후
+function afterLoad() {
+    $("#content-blocks").masonry({
+        itemSelector : ".block", 
+        columnWidth : 488,
+        horizontalOrder: true,
+        isFitWidth: true,
+        stagger: 45,
+        transitionDuration: '0.3s'
+    });
+}
+
 $("document").ready(function(){
     //scrollbar, masonry
     $(".scroll-js-horizon").mCustomScrollbar({theme:"default", axis:"x"});
@@ -76,8 +88,12 @@ $("document").ready(function(){
     $("#content-blocks").masonry({
         itemSelector : ".block", 
         columnWidth : 488,
-        horizontalOrder: true
+        horizontalOrder: true,
+        isFitWidth: true,
+        stagger: 30,
+        transitionDuration: '0.3s'
     });
+    modalCenter();
 
     // LNB 펼치기/접기
     var lnb = $("#lnb");
@@ -119,7 +135,6 @@ $("document").ready(function(){
     });
 
     // modal 제어
-    modalCenter();
     $(".modalController").on("click", function(e){
         var $this = $(e.target).closest(".modalController");
         console.log($this, openTarget)

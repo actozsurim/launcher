@@ -25,7 +25,7 @@
             <div class="modalController" modal-control="open" modal-target="#modal-set">설정 팝업</div>
             <div class="modalController" onclick="$('#blocks').fadeOut();$('#content-loading').fadeIn();$('#content-fail').fadeOut();">데이터 로딩중</div>
             <div class="modalController" onclick="$('#blocks').fadeOut();$('#content-loading').fadeOut();$('#content-fail').fadeIn();">데이터 로딩 실패</div>
-            <div class="modalController" onclick="$('#blocks').fadeIn();$('#content-loading').fadeOut();$('#content-fail').fadeOut();">컨텐츠 블록 보기</div>
+            <div class="modalController" onclick="$('#blocks').fadeIn();$('#content-loading').fadeOut();$('#content-fail').fadeOut(); afterLoad();">블록형 리스트 보기</div>
             <div class="" onclick="$('.modal').fadeOut();$('.dimmed').fadeOut();">[[모든 팝업 닫기]]</div>
             <div class="" onclick="$('nav').fadeOut();">[[가이드 닫기]]</div>
         </nav>
@@ -228,8 +228,7 @@
                 </div>
                 <!--//LNB 접기-->
             </div>
-            <!--//LNB-->
-            
+            <!--//LNB-->            
             <!--LNB: pc방 자동실행일 경우-->
             <div id="lnb" class="pc_auto" style="display: none;">
                 <!--자동 패치-->
@@ -310,6 +309,7 @@
                 <!--//SNS-->
             </div>
             <!--//LNB-->
+
             <div id="content">
                 <!--상단 프로그레스 바 영역-->
                 <div class="progress_wrap">
@@ -434,18 +434,14 @@
                     <!--프로그레스 바-->
                 </div>
                 <!--//상단 프로그레스 바 영역-->
-                <!--컨텐츠 블록-->
-                <div class="test"></div>
+                <!--블록형 리스트-->
                 <div id="blocks" class="scroll-js mCustomScrollbar">
+                    <!--변경사항-->
                     <!--
-                    윈도우 로드 이후에 <div id="blocks">를 삽입할 경우 하기의 스크립트를 실행시켜 주어야 함.
-                        $(".scroll-js").mCustomScrollbar({theme:"default", axis:"y"});
-                        $("#content-blocks").masonry({
-                            itemSelector : ".block", 
-                            columnWidth : 488,
-                            horizontalOrder: true
-                        });
+                    윈도우 로드 이후에 블록형 리스트 <div id="blocks">를 삽입할 경우 하기의 함수를 실행시켜 주어야 함.
+                        afterLoad();
                     -->
+                    <!--//변경사항-->
                     <h1 id="logo"><img src="../../img/launcher/logo.png" alt="파이널판타지14(FINAL FANTASY XIV)" /></h1>
                     <!--블록형 리스트-->
                     <ul id="content-blocks">
@@ -522,7 +518,7 @@
                     <!--//블록형 리스트-->
                     <p class="copyright">&copy;2010 - <span class="years"></span>&nbsp;SQUARE ENIX CO., LTD. All Rights Reserved. Published in Korea by ACTOZ SOFT CO., LTD.</p>
                 </div>
-                <!--//컨텐츠 블록-->
+                <!--//블록형 리스트-->
                 <!-- 데이터 로딩중 -->
                 <div id="content-loading" class="load" style="display: none;">
                     <div class="wrap1">
@@ -584,9 +580,9 @@
                 </ul>
                 <!--//토스트 팝업-->
 
-                <div class="dimmed" style="display: none;"></div><!--팝업 띄울때 공통 dim처리-->
+                <div class="dimmed"></div><!--팝업 띄울때 공통 dim처리-->
                 <!--점검 팝업-->
-                <div id="modal-check" class="modal" style="display: none;">
+                <div id="modal-check" class="modal">
                     <div class="text-wrap">
                         <div class="icon icon-exclamation"></div>
                         <strong class="title">
@@ -627,7 +623,7 @@
                         3. onclick 이벤트로 작성하여도 무관함. 
                             ex) <div onclick='$("#modal-oooo").fadeOut(); $(".dimmed").fadeOut();'></div>
                         -->
-                        <button type="button" class="modalController" modal-control="call" modal-target="#modal-notice"><i class="icon icon-pop-close">확인</i></button>
+                        <button type="button" class="modalController" modal-control="call" modal-target="#modal-notice">확인</button>
                         <label>
                             <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
                         </label>
@@ -645,8 +641,14 @@
                             <!--<img src="../../img/launcher/sample_01.png" />-->
                         </div>
                         <div class="text-wrap">
-                            <a href="https://www.ff14.co.kr/main" target="_blank" class="link">자세히 보기</a><!-- IMS에서 링크를 입력했을 경우 <a class="link"> 노출. 링크를 입력하지 않으면 삭제 -->
-                            <strong class="title">[파이널판타지14X매드라이프] 4주년 기념 특별방송 안내<br />                  [파이널판타지14X매드라이프] 4주년 기념 특별방송 안내</strong>
+                            <!--변경사항-->
+                            <!-- IMS에서 링크를 입력했을 때 -->
+                            <strong class="title"><a href="https://www.ff14.co.kr/main" target="_blank">4주년 기념 특별방송 안내<br />[파이널판타지14X매드라이프] 4주년 기념 특별방송 생방송 안내입니다<i class="icon icon-link"></i></a></strong>
+                            <!-- IMS에서 링크를 입력하지 않았을 때 -->
+                            <!--
+                            <strong class="title">4주년 기념 특별방송 안내<br />[파이널판타지14X매드라이프] 4주년 기념 특별방송 생방송 안내입니다</strong>
+                            -->
+                            <!--//변경사항-->
                             <em class="sub-title">본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! </em>
                             <div class="text">
                                 안녕하세요.<br /> 
@@ -674,8 +676,14 @@
                 <div id="modal-notice-text" class="modal" style="display: none;">
                     <div class="modal-notice-wrap scroll-js mCustomScrollbar">
                         <div class="text-wrap">
-                            <a href="https://www.ff14.co.kr/main" target="_blank" class="link">자세히 보기</a><!-- IMS에서 링크를 입력했을 경우 <a class="link"> 노출. 링크를 입력하지 않으면 삭제 -->
-                            <strong class="title">[파이널판타지14X매드라이프] 4주년 기념 특별방송 안내<br />                  [파이널판타지14X매드라이프] 4주년 기념 특별방송 안내</strong>
+                            <!--변경사항-->
+                            <!-- IMS에서 링크를 입력했을 때 -->
+                            <!--
+                            <strong class="title"><a href="https://www.ff14.co.kr/main" target="_blank">4주년 기념 특별방송 안내<br />[파이널판타지14X매드라이프] 4주년 기념 특별방송 생방송 안내입니다<i class="icon icon-link"></i></a></strong>
+                            -->
+                            <!-- IMS에서 링크를 입력하지 않았을 때 -->
+                            <strong class="title">4주년 기념 특별방송 안내<br />[파이널판타지14X매드라이프] 4주년 기념 특별방송 생방송 안내입니다</strong>
+                            <!--//변경사항-->
                             <em class="sub-title">본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! 본방 사수! </em>
                             <div class="text">
                                 안녕하세요.<br /> 
@@ -716,9 +724,6 @@
                     </div>
                     <div class="btn-wrap">
                         <button type="button" class="modalController" modal-control="close">확인</button>
-                        <label>
-                            <input type="checkbox" /><i class="icon icon-check"></i><span>하루 동안 보지 않기</span>
-                        </label>
                     </div>
                     <button type="button" class="close-pop modalController" modal-control="close"><i class="icon icon-pop-close"></i></button>
                 </div>
@@ -788,14 +793,6 @@
                             <div class="set1">
                                 <div class="text-wrap">
                                     <strong class="title">화면 모드 설정</strong>
-                                    <!--
-                                    <div class="select-box">
-                                        <select>
-                                            <option selected>창모드(기본)</option>
-                                            <option>전체화면</option>
-                                        </select>
-                                    </div>
-                                    -->
                                     <div class="select-box">
                                         <span>창모드</span>
                                         <ul>
@@ -856,12 +853,6 @@
                                                     <span class="off">수동으로 업데이트 합니다.</span>
                                                 </label>
                                             </div>
-                                            <!--
-                                            <div>
-                                                <button class="btn-setting on"></button>
-                                                <p>런처 실행 시 게임을 자동 업데이트 합니다.</p>
-                                            </div>
-                                            -->
                                         </li>
                                         <li>
                                             <strong class="title">Direct X 11 사용 설정</strong>
@@ -873,12 +864,6 @@
                                                     <span>더 아름다운 그래픽으로 파이널판타지14를 즐길 수 있는 Direct X 11 모드를 사용합니다.</span>
                                                 </label>
                                             </div>
-                                            <!--
-                                            <div>
-                                                <button class="btn-setting on"></button>
-                                                <p>더 아름다운 그래픽으로 파이널판타지 14를 즐길 수 있는 Direct X 11 모드를 사용합니다.</p>
-                                            </div>
-                                            -->
                                         </li>
                                         <li>
                                             <strong class="title">시스템 설정 초기화</strong>
@@ -962,7 +947,5 @@
                 <!-- //설정 팝업 -->
             </div>
         </div>
-        <script type="text/javascript">
-        </script>
     </body>
 </html>
