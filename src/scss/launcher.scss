@@ -1526,7 +1526,7 @@ html, body {
                                 p {
                                     display: inline-block;
                                 }
-                                &:nth-child(2) div{
+                                p + div{
                                     margin-top: 5px;
                                 }
                                 /*.btn-setting {
@@ -1555,19 +1555,19 @@ html, body {
                                                 display: inline-block;
                                                 @include sprite($btn-setting-off);
                                             }
-                                            & + i + .on {
+                                            & + i ~ .on {
                                                 display: none;
                                             }
-                                            & + i + .on + .off {
+                                            & + i + .on ~ .off {
                                                 display: inline-block;
                                             }
                                             &:checked + i {
                                                 @include sprite($btn-setting-on);
                                             }
-                                            &:checked + i + .on {
+                                            &:checked + i ~ .on {
                                                 display: inline-block;
                                             }
-                                            &:checked + i + .on + .off {
+                                            &:checked + i ~ .off {
                                                 display: none;
                                             }
                                         }
@@ -1575,6 +1575,7 @@ html, body {
                                             display: inline-block;
                                             margin: 0 0 0 6px;
                                             font-size: 13px;
+                                            vertical-align: middle;
                                         }
                                     }
                                 }
