@@ -839,10 +839,9 @@ html, body {
                     .date {
                         padding: 0 15px 15px;
                         .color {
-                            color: #6d67a7;
                             padding: 0 10px 0 0;
                         }
-                        .span {
+                        .no-color {
                             color: #a0a0a0;
                         }
                     }
@@ -1102,8 +1101,10 @@ html, body {
                     }
                     .sub-title {
                         display: block;
-                        color: #6b90dd;
                         margin: 0 0 15px;
+                        .color {
+                            margin: 0 10px 0 0;
+                        }
                     }
                     .text {
                         color: #a0a0a0;
