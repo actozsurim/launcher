@@ -59,7 +59,6 @@ input:focus {
     position: relative;
     width: 300px;
     height: 690px;
-    margin: 20px auto 0;
     padding: 0 50px;
     @include bg('bg.jpg', no-repeat 0 0);
     color: #fff;
@@ -310,6 +309,25 @@ input:focus {
             }
             .BDC_SoundIcon:hover {
                 @include sprite($btn-sound-on);
+            }
+            .BDC_CaptchaDiv {
+                padding: 15px;
+                border: 1px solid rgba(255,255,255,.2);
+            }
+            .BDC_CaptchaIconsDiv, .BDC_CaptchaImageDiv {
+                display: inline-block;
+            }
+            .BDC_CaptchaIconsDiv {
+                .BDC_ReloadLink {
+                    margin: 0 4px;
+                    float: left;
+                }
+                .BDC_Placeholder {
+                    display: none;
+                }
+                .BDC_SoundLink {
+                    display: inline-block;
+                }
             }
         }
         .alert_txt {
