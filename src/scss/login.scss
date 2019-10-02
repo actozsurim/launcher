@@ -485,4 +485,82 @@ input:focus {
             }
         }
     }
+
+    //popup
+    .layer_pop {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -46%);
+        width: 358px;
+        height: 470px;
+        background: #313131;
+        border-radius: 10px;
+        text-align: center;
+        z-index: 999;
+        overflow: hidden;
+        .text-wrap {
+            .icon-exclamation {
+                @include sprite($icon-exclamation);
+                text-align: center;
+                margin: 35px auto 15px;
+            }
+            .title {
+                display: block;
+                margin: 15px 0;
+                color: #fff;
+            }
+            .text {
+                font-size: 13px;
+                line-height: 20px;
+                color: #a0a0a0;
+                .table {
+                    margin: 13px 15px 0 15px;
+                    text-align: left;
+                    li {
+                        border: 1px solid #000;
+                        border-top: 0;
+                        &:first-child {
+                            border-top: 1px solid #000;
+                            em {
+                                height: 38px;
+                                line-height: 38px;
+                            }
+                        }
+                        em {
+                            display: inline-block;
+                            width:  70px;
+                            padding: 10px;
+                            background: #000;
+                            font-size: 13px;
+                        }
+                        span {
+                            display: inline-block;
+                            padding: 10px;
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+        .closeArea {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 19px 0;
+            background: #1b1b1b;
+            text-align:center;
+            button {
+                padding: 8px 15px;
+                border-radius: 5px;
+                color: #fff;
+            }
+            .blue-bg {
+                background: #486ab4;
+                &:hover {
+                    background: #5177c7;
+                }
+            }
+        }
+    }
 }
