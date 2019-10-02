@@ -69,6 +69,16 @@ function stopVideo(_modal) {
     iframee.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
 }
 
+//창 최대화/최소화 toggle
+function toggle_maximum(_this){
+    var $this = $(_this);
+    if ($this.hasClass("type2")) {
+        $this.removeClass("type2")
+    } else {
+        $this.addClass("type2")
+    }
+}
+
 // window load 후
 function afterLoad() {
     $("#content-blocks").masonry({

@@ -36,7 +36,9 @@
                 <ul class="right">
                     <li class="setting modalController" modal-control="open" modal-target="#modal-set"><span>설정</span></li>
                     <li class="minimum"><span>최소화</span></li>
-                    <li class="maximum"><span>최대화</span></li>
+                    <!--2019.09.30 수정-->
+                    <li class="maximum" onclick="toggle_maximum(this);"><span>최대화</span></li>
+                    <!--//2019.09.30 수정-->
                     <li class="close modalController" modal-control="open" modal-target="#modal-closed"><span>닫기</span></li>
                 </ul>
             </div>
@@ -49,7 +51,12 @@
                     <div class="photo">
                         <div class="fire_on pc"></div>
                         <div class="fire_off not-pc"></div>
-                        <div class="face"><img src="https://image.ff14.co.kr/html2/img/char_dummy.png" /></div>
+                        <!--2019.09.30 수정: 캐릭터 이미지
+                        char_n0: 등록된 이미지 없음. 
+                        char_n1 ~ char_n24까지 공홈과 동일함.
+                        -->
+                        <div class="face char_n10"></div>
+                        <!--//2019.09.30 수정: 캐릭터 이미지-->
                         <span class="icon icon-pc pc">PC방</span>
                     </div>
                     <div class="info wide">
@@ -62,12 +69,22 @@
                 <div class="direct">
                     <span class="wide">Direct X 11 MODE</span>
                     <span class="narrow">DX 11</span>
+                    <!--2019.09.30 수정: DX11 비활성화 추가-->
+                    <div class="check_dx disabled">
+                        <label class="radio_dx" for="checkDX">
+                            <input type="checkbox" value="true" name="checkDX" id="checkDX" disabled>
+                            <i class="icon icon-btn-dx"></i>
+                        </label>
+                    </div>
+                    <!-- ↓DX11 기존 on/off
                     <div class="check_dx">
                         <label class="radio_dx" for="checkDX">
                             <input type="checkbox" value="true" name="checkDX" id="checkDX" checked>
                             <i class="icon icon-btn-dx"></i>
                         </label>
                     </div>
+                    -->
+                    <!--//2019.09.30 수정: DX11 비활성화 추가-->
                 </div>
                 <!--//Direct X 11-->
                 <!--나의 현황-->
@@ -897,6 +914,15 @@
                                         <li>
                                             <strong class="title">Direct X 11 사용 설정</strong>
                                             <p>Direct 11 모드를 지원하지 않는 PC이거나, 성능을 향상시키려면 체크 옵션을 해제해주세요.</p>
+                                            <!--2019.09.30 수정: DX11 비활성화 추가-->
+                                            <div class="check_setting disabled">
+                                                <label class="radio_dx" for="setting_dx11">
+                                                    <input type="checkbox" value="true" name="setting_dx11" id="setting_dx11" disabled>
+                                                    <i class="icon btn-setting"></i>
+                                                    <span class="disabled">PC 성능에 따라 Direct X 11 사용이 제한됩니다.</span>
+                                                </label>
+                                            </div>
+                                            <!-- ↓DX11 기존 on/off
                                             <div class="check_setting">
                                                 <label class="radio_dx" for="setting_dx11">
                                                     <input type="checkbox" value="true" name="setting_dx11" id="setting_dx11" checked>
@@ -905,6 +931,8 @@
                                                     <span class="off"></span>
                                                 </label>
                                             </div>
+                                            -->                                            
+                                            <!--//2019.09.30 수정: DX11 비활성화 추가-->
                                         </li>
                                         <li>
                                             <strong class="title">시스템 설정 초기화</strong>
