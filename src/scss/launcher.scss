@@ -23,6 +23,7 @@ html, body {
     border: 1px solid #3e3e3e;
     box-sizing: border-box;
     background: #000 url(../img/launcher/bg.png) no-repeat center top;
+    word-break: break-word;
     /* 기본 셋팅 */
     button {
         cursor: pointer;
@@ -574,7 +575,7 @@ html, body {
                 }
             }
             &.bottom {
-                cursor: pointer;
+                //cursor: pointer;
                 li {
                     $icons: 3;                    
                     @for $icon from 1 through $icons {
