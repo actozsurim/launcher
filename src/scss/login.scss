@@ -148,6 +148,12 @@ input:focus {
                 @include sprite($ico-tw-on);
             }
         }
+        .ico_na {
+            @include sprite($ico-na-off);
+            &:hover {
+                @include sprite($ico-na-on);
+            }
+        }
     }
     .login {
         position:relative;
