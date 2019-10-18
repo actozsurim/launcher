@@ -200,7 +200,8 @@ html, body {
             }
             .sns_wrap {
                 li {
-                    padding: 0 4px;
+                    //padding: 0 4px;
+                    padding: 0;
                 }
             }
         }
@@ -644,13 +645,13 @@ html, body {
             li {
                 display: inline-block;
                 width: 18px;
-                height: 18px;
+                height: 21px;
                 opacity: 0.7; 
                 padding: 0 8px;   
-                $sns: 4;
+                $sns: 5;
                 @for $i from 1 through $sns {
                     &:nth-child(#{$i}) {
-                        background: url(../img/launcher/icon_0#{$i}.png) no-repeat center 0;
+                        background: url(../img/launcher/icon_0#{$i}.png) no-repeat center 50%;
                     }
                 }
                 &:hover {
