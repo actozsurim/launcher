@@ -26,7 +26,16 @@ var toastLength;
 function toastOpen() { //toast open
     toast = $("#toast li");
     toastLength = toast.length;
-    toast.parents("#toast").css({right: 15});
+    //toast.parents("#toast").css({right: 15});
+        $("#toast").css({
+            display: 'block',
+            right: 15
+        });
+        toast.css({
+            right: 0,
+            top: 300,
+            opacity: 1
+        });
     var toastAction = setInterval(function(){ 
         toastLength -= 1; 
         console.log(toastLength)
@@ -87,7 +96,8 @@ function afterLoad() {
         horizontalOrder: true,
         isFitWidth: true,
         stagger: 45,
-        transitionDuration: '0.3s'
+        transitionDuration: '0.3s',
+        setLeft: 0
     });
 }
 

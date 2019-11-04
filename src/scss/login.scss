@@ -509,19 +509,20 @@ input:focus {
             .icon-exclamation {
                 @include sprite($icon-exclamation);
                 text-align: center;
-                margin: 35px auto 15px;
+                margin: 27px auto 15px;
             }
             .title {
                 display: block;
-                margin: 15px 0;
+                margin: 12px 0;
                 color: #fff;
             }
             .text {
+                padding: 0 20px;
                 font-size: 13px;
-                line-height: 20px;
+                line-height: 120%;
                 color: #a0a0a0;
                 .table {
-                    margin: 13px 15px 0 15px;
+                    margin: 13px 0 0;
                     text-align: left;
                     li {
                         border: 1px solid #000;
