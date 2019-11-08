@@ -925,6 +925,32 @@ html, body {
                 text-align: right;
                 padding: 45px 27px 25px 60px;
             }
+            .trial {
+                padding: 0 0 10px 27px;
+                color: #aaa;
+                .icon-question2 {
+                    position: relative;
+                    @include sprite($icon-question2);
+                    margin: 0 0 0 2px;
+                    cursor: pointer;
+                    div {
+                        display: none;
+                        position: absolute;
+                        left: 27px;
+                        top: -21px;
+                        @include sprite($bg-tooltip);
+                        z-index: 1;
+                        box-sizing: border-box;
+                        padding: 11px 0 0 24px;
+                        font-size: 14px;
+                    }
+                    &:hover {
+                        div {
+                            display: block;
+                        }
+                    }
+                }
+            }
             #content-blocks {
                 margin: 0 auto;
                 li {
