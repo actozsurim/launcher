@@ -21,12 +21,20 @@ button::-moz-focus-inner {
     border:0;
 }
 input[type="text"],
-input[type="password"]{
+input[type="password"],
+input[type="number"] {
     margin:0;
     padding:0;
     border: 1px solid rgba(255, 255, 255, .2);
     background-color:transparent;
     color: rgba(255, 255, 255, .5);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 input:focus {
     border: 1px solid #fff;
@@ -266,13 +274,25 @@ input:focus {
     // cont1 area
     .cont1 {
         .login_area {
-            padding-bottom: 32px;
+            position: relative; //191106 추가
+            padding-bottom: 12px;
             input {
                 width: 100%;
                 height: 40px;
                 margin-bottom: 5px;
                 text-indent: 10px;
                 font-size: 15px;
+            }
+            //191106 추가
+            .pwtext {
+                display: none;
+                position: absolute;
+                right: 0;
+                bottom: 5px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 13px;
+                color: #e9415d;
             }
             .id_chk {
                 input[type="checkbox"] {
@@ -338,7 +358,7 @@ input:focus {
         }
         .alert_txt {
             margin: 15px 0 10px;
-            height: 36px;
+            height: 56px;
             p {
                 display: table-cell;
                 width: 300px;
@@ -348,6 +368,9 @@ input:focus {
                 vertical-align: middle;
                 line-height: 18px;
                 color: #e9415d;
+                a{
+                    display: inline-block;
+                }
             }
         }
         .btn_area {
@@ -403,7 +426,7 @@ input:focus {
         .uotp_area {
             margin-top: 10px;
             input {
-                width: 192px;
+                width: 191px; //191106 width -1px
                 height: 40px;
                 margin-right: 5px;
                 text-indent: 10px;
@@ -494,6 +517,7 @@ input:focus {
 
     //popup
     .layer_pop {
+        display: none;
         position: absolute;
         top: 50%;
         left: 50%;

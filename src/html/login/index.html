@@ -3,11 +3,10 @@
         <title>FF14 런처 로그인</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" type="text/css" href="../../css/launcher_2019.css" id="CssURL"/>
-        <script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
-        <script type="text/javascript" src="../../js/loginCheck.js"></script>
-        <script type="text/javascript" src="../../js/jquery.bxslider.min.js"></script>
-        <script type="text/javascript" src="../../js/script.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../css/login.css" id="CssURL"/>
+        <script type="text/javascript" src="../../js/lib/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="../../js/lib/loginCheck.js"></script>
+        <script type="text/javascript" src="../../js/lib/script.js"></script>
         <script type="text/javascript" src="../../js/login_design.js"></script>
 
     </head>
@@ -47,12 +46,27 @@
             <!-- channel login_area -->
             <div class="loginArea">
                 <!-- actoz -->
-                <div class="ch01 actozArea">
+                <div class="ch01 actozArea"> <!-- 191106 임시로 inline style display: none; -->
                     <div class="cont1 on">
                         <!-- login area -->
                         <div class="login_area">
-                            <input type="text" placeholder="아이디" />
-                            <input type="password" placeholder="비밀번호" />
+                            <input type="text" id="userId" placeholder="아이디" /><!-- 191107 테스트를 위해 id값 임의 설정 -->
+                            <input type="password" id="passWord" placeholder="비밀번호" /> <!-- 191107 테스트를 위한 id값 임의 설정 -->
+                            <!-- 191106 CAPS LOCK 문구 추가부분 -->
+                            <p id="pwtext" class="pwtext">&#60;Caps Lock&#62;이 켜져있습니다.</p>
+                            <script>
+                                ////// 191106 추가 caps lock issue
+                                var pwinput = document.getElementById("passWord"); //191107 login_area의 password 입력란과 id값이 같아야 합니다.
+                                var pwtext = document.getElementById("pwtext");
+                                pwinput.addEventListener("keyup", function(event) {
+                                    if (event.getModifierState("CapsLock")) {
+                                        pwtext.style.display = "block";
+                                    } else {
+                                        pwtext.style.display = "none"
+                                    }
+                                });
+                            </script>
+                            <!-- //191106 CAPS LOCK 문구 추가부분 -->
                             <div class="id_chk">
                                 <input type="checkbox" name="id_chk01" id="id_chk01">
                                 <label for="id_chk01">아이디 저장</label>
@@ -80,7 +94,15 @@
                         <!-- //captcha -->
                         <!-- alert text area  -->
                         <div class="alert_txt">
-                            <p>등록되지 않은 아이디이거나,<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다.</p>
+                            <!-- 191107 a태그 [바로가기] 추가 -->
+                            <p>등록되지 않은 아이디이거나,<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다. <a href="#" class="userlink">[바로가기]</a></p>
+                            <script>
+                                $("#userId").keyup(function(){ //login_area의 임의로 설정한 userId와 id값이 같아야 합니다.
+                                    var userId = $("#userId").val();
+                                    $(".userlink").attr("href","http://www.ff14.co.kr/member/Unlock/Default.aspx?MemberID="+userId);
+                                });
+                            </script>
+                            <!-- //191107 a태그 [바로가기] 추가 -->
                             <!-- <p>올바른 정보를 입력해주세요.</p> -->
                         </div>
                         <!-- //alert text area  -->
@@ -94,22 +116,7 @@
                         </div>
                         <!-- //login btn_ join,find pw, find id -->
                     </div>
-                    <div class="cont2">
-                        <p>U-OTP 인증번호</p>
-                        <div class="uotp_area">
-                            <input type="text" placeholder="인증 번호 입력" />
-                            <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
-                        </div>
-                        <div class="alert_txt">
-                            <p>OTP 인증번호가 일치하지 않습니다.</p>
-                        </div>
-                        <div class="btn_area">
-                            <ul>
-                                <li><a href="https://www.ff14.co.kr/support/faq" target="_blank">FAQ</a></li>
-                                <li><a href="https://www.ff14.co.kr/support/qna" target="_blank">1:1 메일 문의</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <!-- 191106 otp 창 밖으로 뺌 _하단참고-->
                     <!-- sns btn -->
                     <div class="sns_area">
                         <ul>
@@ -123,6 +130,24 @@
                     </div>
                     <!-- //sns btn -->
                 </div>
+                <!-- 191106 otp area 밖으로 뺀 부분 // class name [otpArea] -->
+                <div class="cont2 otpArea" style="display:none;">  <!-- 191106 임시로 inline style display: block; -->
+                    <p>U-OTP 인증번호</p>
+                    <div class="uotp_area">
+                        <input type="number" placeholder="인증 번호 입력" /> <!-- 191107 input type text에서 number로 변경 -->
+                        <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
+                    </div>
+                    <div class="alert_txt">
+                        <p>OTP 인증번호가 일치하지 않습니다.</p>
+                    </div>
+                    <div class="btn_area">
+                        <ul>
+                            <li><a href="https://www.ff14.co.kr/support/faq" target="_blank">FAQ</a></li>
+                            <li><a href="https://www.ff14.co.kr/support/qna" target="_blank">1:1 메일 문의</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //191106 otp area 밖으로 뺀 부분 // class name [otpArea] -->
 
                 <!-- naver -->
                 <div class="ch02 naverArea hidden">
@@ -153,6 +178,7 @@
                         </div>
                         <!-- //login btn_ join,find pw, find id -->
                     </div>
+                    <!-- 191106 OTP issue 주석처리
                     <div class="cont2">
                         <p>회원님께서는 OTP 서비스를 이용하고 계십니다.<br>OTP 인증번호를 입력해 주세요.</p>
                         <div class="uotp_area">
@@ -168,7 +194,7 @@
                                 <li><a href="#n" target="_blank">OTP 해지</a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- sns btn -->
                     <div class="sns_area">
                         <ul>

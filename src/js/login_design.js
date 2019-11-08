@@ -56,4 +56,15 @@ $(function(){
         $('.naverArea .cont2').show();
     });
 
+    //1107 추가__ actoz pw focus off action
+    $(".actozArea .login_area").find('input[type="password"]').focusout(function(){
+        $(".pwtext").hide();
+    });
+    //1107 추가__ uopt 7자로 제한
+    var otplength = $(".uotp_area").find("input[type=number]");
+    $(otplength).on('keyup', function(){
+        if ($(this).val().length > 7) {
+          $(this).val($(this).val().substring(0,7));
+      }
+    });
 });
