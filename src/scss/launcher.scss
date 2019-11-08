@@ -926,9 +926,11 @@ html, body {
                 padding: 45px 27px 25px 60px;
             }
             .trial {
+                display: none;
                 padding: 0 0 10px 5px;
                 margin: 0 auto;
                 color: #aaa;
+                box-sizing: border-box;
                 .icon-question2 {
                     position: relative;
                     @include sprite($icon-question2);

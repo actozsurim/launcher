@@ -17,6 +17,12 @@ function modalCenter() {
 
 // resizing할 요소들
 function resizing() {
+    // 무료체험 텍스트 좌표
+    setTimeout(function() {
+        $(".trial").css({
+            width: $("#content-blocks").width()
+        }).fadeIn();
+    }, 200);
 }
 
 // toast popup
@@ -219,16 +225,11 @@ $("document").ready(function(){
     });
 
     // resizing
-    //resizing();
+    resizing();
 });
 
 
 $(window).resize(function(){
     modalCenter();
-    // 무료체험 텍스트 좌표
-    setTimeout(function() {
-        $(".trial").css({
-            width: $("#content-blocks").width()
-        });
-    }, 200);
+    resizing();
 });
