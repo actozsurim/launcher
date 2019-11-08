@@ -225,5 +225,10 @@ $("document").ready(function(){
 
 $(window).resize(function(){
     modalCenter();
-    //resizing();
+    // 무료체험 텍스트 좌표
+    setTimeout(function() {
+        $(".trial").css({
+            width: $("#content-blocks").width()
+        });
+    }, 200);
 });
