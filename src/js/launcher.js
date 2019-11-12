@@ -15,14 +15,25 @@ function modalCenter() {
     }
 }
 
+// 무료체험 텍스트
+function trialText() {
+    $(".trial").fadeIn();
+}
+
 // resizing할 요소들
 function resizing() {
     // 무료체험 텍스트 좌표
     setTimeout(function() {
         $(".trial").css({
             width: $("#content-blocks").width()
-        }).fadeIn();
+        });
     }, 200);
+}
+
+// scroll-js
+function scrollJS() {
+    $(".scroll-js-horizon").mCustomScrollbar({theme:"default", axis:"x"});
+    $(".scroll-js").mCustomScrollbar({theme:"default", axis:"y"});
 }
 
 // toast popup
@@ -33,15 +44,15 @@ function toastOpen() { //toast open
     toast = $("#toast li");
     toastLength = toast.length;
     //toast.parents("#toast").css({right: 15});
-        $("#toast").css({
-            display: 'block',
-            right: 15
-        });
-        toast.css({
-            right: 0,
-            top: 300,
-            opacity: 1
-        });
+    $("#toast").css({
+        display: 'block',
+        right: 15
+    });
+    toast.css({
+        right: 0,
+        top: 300,
+        opacity: 1
+    });
     var toastAction = setInterval(function(){ 
         toastLength -= 1; 
         console.log(toastLength)
@@ -109,8 +120,9 @@ function afterLoad() {
 
 $("document").ready(function(){
     //scrollbar, masonry
-    $(".scroll-js-horizon").mCustomScrollbar({theme:"default", axis:"x"});
-    $(".scroll-js").mCustomScrollbar({theme:"default", axis:"y"});
+    //$(".scroll-js-horizon").mCustomScrollbar({theme:"default", axis:"x"});
+    //$(".scroll-js").mCustomScrollbar({theme:"default", axis:"y"});
+    scrollJS();
     $("#content-blocks").masonry({
         itemSelector : ".block", 
         columnWidth : 488,
