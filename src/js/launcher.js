@@ -223,9 +223,9 @@ $("document").ready(function(){
     });
 
     //화면모드설정
-    var sel_txt = $('.select-box span, .select-box ul');
+    var sel_txt = $('.select-box span, .select-box ul, .select-box i');
     sel_txt.click(function(){
-        console.log(sel_txt);
+        //console.log(sel_txt);
         $('i').toggleClass('on');
         $('.select-box ul').toggle();
     });
@@ -234,6 +234,18 @@ $("document").ready(function(){
         $this.parents('li').addClass('on');
         $this.parents('li').siblings().removeClass('on');
         $('.select-box span').text($this.text());
+        /*if ($("#SetupApply").prop("disabled") == true) {
+            $("#SetupApply").prop("disabled", false)
+        }*/
+    });
+    $(".dimmed, #modal-set").click(function(e){
+        if($(e.target).closest(".select-box").length < 1) {
+            if ($('.select-box ul').is(':visible')) {
+                //alert('영역 밖입니다.'); 
+                $('i').removeClass('on');
+                $('.select-box ul').hide();
+            }
+        }
     });
 
     // resizing

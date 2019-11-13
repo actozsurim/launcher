@@ -1029,7 +1029,7 @@
                         <div class="btn-wrap-right">
                             <button type="button">확인</button>
                             <button type="button">취소</button>
-                            <button type="button">적용</button>
+                            <button type="button" disabled id="SetupApply" onclick="SetupConfirm('');">적용</button>
                         </div>
                     </div>
                     <button type="button" class="close-pop modalController" modal-control="close"><i class="icon icon-pop-close"></i></button>
@@ -1037,5 +1037,44 @@
                 <!-- //설정 팝업 -->
             </div>
         </div>
+        <script type="text/javascript">
+        //설정창 확인 또는 적용
+        function SetupConfirm(area) {
+
+var BoolAutoSetup = "";
+var BoolScreenMode = "";
+var BoolDirectX = "";
+
+BoolAutoSetup = $("#decideAS").val() == "1" ? true : false;
+BoolScreenMode = $("#screenMode").val() == "0" ? true : false;
+BoolDirectX = $("#decideDX").val() == "1" ? true : false;
+
+
+//자동패치 설정
+$.ajax({
+    type: "POST",
+    url: "/LauncherFF/SaveASCooike",
+    data: { decideAS: $("#decideAS").val() },
+    async: false,
+    success: function (d) {
+    },
+    error: function (request, status, error) {
+    }
+
+});
+
+
+$("#SetupApply").attr("disabled", true);
+
+//확인 클릭 시 팝업 종료
+if (area == "Confirm") {
+
+    $("#modal-set").fadeOut();
+    $(".dimmed").fadeOut();
+
+}
+
+}
+        </script>
     </body>
 </html>

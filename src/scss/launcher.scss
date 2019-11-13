@@ -1626,6 +1626,7 @@ html, body {
                                 position: absolute;
                                 top: 16px;
                                 right: 10px;
+                                cursor: pointer;
                                 @include sprite($bg-select-off);
                                 z-index: 9;
                                 &.on {
