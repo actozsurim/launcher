@@ -46,25 +46,8 @@ $(function(){
         $('.ch0' + index).removeClass('hidden');
     });
 
-    //확인 후 U-OTP 페이지로 이동 (layer st)
-    $('.actozArea .btn_login').click(function(){
-        $('.actozArea .cont1').hide();
-        $('.actozArea .cont2').show();
-    });
-    $('.naverArea .btn_login').click(function(){
-        $('.naverArea .cont1').hide();
-        $('.naverArea .cont2').show();
-    });
-
     //1107 추가__ actoz pw focus off action
     $(".actozArea .login_area").find('input[type="password"]').focusout(function(){
         $(".pwtext").hide();
-    });
-    //1107 추가__ uopt 7자로 제한
-    var otplength = $(".uotp_area").find("input[type=number]");
-    $(otplength).on('keyup', function(){
-        if ($(this).val().length > 7) {
-          $(this).val($(this).val().substring(0,7));
-      }
     });
 });

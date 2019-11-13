@@ -134,8 +134,17 @@
                 <div class="cont2 otpArea" style="display:none;">  <!-- 191106 임시로 inline style display: block; -->
                     <p>U-OTP 인증번호</p>
                     <div class="uotp_area">
-                        <input type="number" placeholder="인증 번호 입력" /> <!-- 191107 input type text에서 number로 변경 -->
+                        <input type="number" placeholder="인증 번호 입력" maxlength="7" oninput="numberMaxLength(this)"/> <!-- 191112 maxlength와 oninput 추가 -->
                         <button type="submit" class="btn_uotp" onfocus="blur();">확인</button>
+                        <!-- 191112 oninput script 추가 시작 -->
+                        <script>
+                            function numberMaxLength(e){
+                                if(e.value.length > e.maxLength){
+                                    e.value = e.value.slice(0, e.maxLength);
+                                }
+                            }
+                        </script>
+                        <!-- //191112 oninput script 추가 끝 -->
                     </div>
                     <div class="alert_txt">
                         <p>OTP 인증번호가 일치하지 않습니다.</p>
