@@ -294,11 +294,11 @@ html, body {
                     border-radius: 50%;
                     overflow: hidden;
                     background-color: #000;
-                    background-image: url(https://image.ff14.co.kr/html2/img/char.png);
+                    background-image: url(../img/launcher/char.png);    /* 2019.12. 종족 추가 */
                     background-repeat: no-repeat;
-                    background-size: 198px auto;
+                    background-size: 199px auto;
                     &.char_n0 {
-                        background-image: url(https://image.ff14.co.kr/html2/img/char_dummy.png);
+                        background-image: url(../img/launcher/char_dummy.png);  /* 2019.12. 종족 추가 */
                         background-size: 100%; 
                     }
                     &.char_n1 {
@@ -392,10 +392,27 @@ html, body {
                     &.char_n23 {
                         background-position: -100px -250px
                     }
-                    
+                    /* 2019.12. 종족 추가 */
                     &.char_n24 {
                         background-position: -150px -250px
                     }
+                    
+                    &.char_n25 {
+                        background-position: 0 -300px
+                    }
+                    
+                    &.char_n26 {
+                        background-position: -50px -300px
+                    }
+                    
+                    &.char_n27 {
+                        background-position: -100px -300px
+                    }
+                    
+                    &.char_n28 {
+                        background-position: -150px -300px
+                    }
+                    /* //2019.12. 종족 추가 */
                 }
                 .icon-pc {
                     position: absolute;
