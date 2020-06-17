@@ -1,2 +1,2 @@
-��# Final Fantasy Game Launcher Renewal
-��# Please install 'Gulp'
+# Final Fantasy Game Launcher Renewal
+# Please install 'Gulp'
